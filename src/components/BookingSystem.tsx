@@ -13,10 +13,23 @@ export default function BookingSystem() {
   const [agreedToRules, setAgreedToRules] = useState(false);
 
   const timeSlots = [
-    "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
-    "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", 
-    "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM",
-    "11:00 PM", "12:00 AM"
+    { time: "08:00 AM", available: true },
+    { time: "09:00 AM", available: false },
+    { time: "10:00 AM", available: true },
+    { time: "11:00 AM", available: true },
+    { time: "12:00 PM", available: false },
+    { time: "01:00 PM", available: true },
+    { time: "02:00 PM", available: true },
+    { time: "03:00 PM", available: true },
+    { time: "04:00 PM", available: false },
+    { time: "05:00 PM", available: true }, 
+    { time: "06:00 PM", available: true },
+    { time: "07:00 PM", available: true },
+    { time: "08:00 PM", available: true },
+    { time: "09:00 PM", available: false },
+    { time: "10:00 PM", available: true },
+    { time: "11:00 PM", available: true },
+    { time: "12:00 AM", available: true }
   ];
 
   const pitches = [
@@ -155,21 +168,39 @@ export default function BookingSystem() {
                 
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-6 font-outfit">Select Time</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                    {timeSlots.map((time) => (
+                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+                    {timeSlots.map((slot) => (
                       <button
-                        key={time}
-                        onClick={() => setSelectedTime(time)}
+                        key={slot.time}
+                        onClick={() => setSelectedTime(slot.time)}
+                        disabled={!slot.available}
                         className={clsx(
                           "py-3 px-4 rounded-xl border text-sm font-semibold transition-all duration-300",
-                          selectedTime === time
-                            ? "border-primary bg-primary text-black shadow-[0_0_15px_rgba(16,185,129,0.4)]"
-                            : "border-white/10 bg-white/5 text-gray-300 hover:border-white/30"
+                          !slot.available 
+                            ? "border-red-500/30 bg-red-500/10 text-red-500/50 cursor-not-allowed" 
+                            : selectedTime === slot.time
+                              ? "border-primary bg-primary text-black shadow-[0_0_15px_rgba(16,185,129,0.4)]"
+                              : "border-blue-500/30 bg-blue-500/10 text-blue-100 hover:border-blue-500/60 hover:bg-blue-500/20 hover:text-white"
                         )}
                       >
-                        {time}
+                        {slot.time}
                       </button>
                     ))}
+                  </div>
+                  
+                  <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start text-xs font-bold uppercase tracking-wider text-gray-400">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-blue-500/30 border border-blue-500"></div>
+                      <span>Available</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-red-500/30 border border-red-500"></div>
+                      <span>Booked</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+                      <span className="text-primary">Selected</span>
+                    </div>
                   </div>
                 </div>
               </motion.div>

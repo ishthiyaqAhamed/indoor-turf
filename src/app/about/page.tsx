@@ -18,15 +18,11 @@ export default function AboutPage() {
             </p>
           </div>
           
-          <div className="lg:w-1/2 w-full">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-square rounded-3xl overflow-hidden glass p-1">
+          <div className="lg:w-1/2 w-full flex justify-center items-center">
+            <div className="w-full max-w-md aspect-square rounded-full overflow-hidden shadow-[0_0_50px_rgba(16,185,129,0.2)] flex items-center justify-center p-2 bg-gradient-to-br from-primary/30 to-black">
+              <div className="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/pro-pitch.png" alt="Pitch" className="w-full h-full object-cover rounded-2xl" />
-              </div>
-              <div className="aspect-square rounded-3xl overflow-hidden glass p-1 translate-y-8">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/bowling-machine.png" alt="Cricket" className="w-full h-full object-cover rounded-2xl" />
+                <img src="/logo.jpg" alt="ACM Indoor Logo" className="w-full h-full object-cover scale-[1.02]" />
               </div>
             </div>
           </div>
