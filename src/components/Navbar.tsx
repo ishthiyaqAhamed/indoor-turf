@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Calendar, MapPin } from "lucide-react";
+import { Menu, X, Calendar, MapPin, Shield } from "lucide-react";
 import clsx from "clsx";
 
 export default function Navbar() {
@@ -111,12 +111,12 @@ export default function Navbar() {
               transition={{ delay: 0.4 }}
             >
               <Link
-                href="/booking"
+                href="/admin"
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-4 flex items-center gap-2 rounded-full bg-primary px-10 py-4 font-bold text-primary-foreground"
               >
-                <Calendar className="w-5 h-5" />
-                <span>Book Court</span>
+                <Shield className="w-5 h-5" />
+                <span>Admin</span>
               </Link>
             </motion.div>
           </motion.div>

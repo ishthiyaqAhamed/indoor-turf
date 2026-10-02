@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Trophy, Shield, Zap, MapPin } from "lucide-react";
+import { ArrowRight, Trophy, Shield, Zap, MapPin, Activity, Star, Users, Calendar } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -11,6 +11,27 @@ export default function Home() {
     target: heroRef,
     offset: ["start start", "end start"],
   });
+
+  const [footballScore, setFootballScore] = useState({ home: 2, away: 1, min: 67 });
+  const [cricketScore, setCricketScore] = useState({ runs: 215, wickets: 4, overs: 38.2 });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFootballScore(prev => ({
+        ...prev,
+        min: prev.min < 90 ? prev.min + 1 : prev.min,
+        home: Math.random() > 0.92 ? prev.home + 1 : prev.home,
+        away: Math.random() > 0.95 ? prev.away + 1 : prev.away,
+      }));
+      setCricketScore(prev => ({
+        ...prev,
+        overs: parseFloat(((Math.round(prev.overs * 10) % 10) === 5 ? Math.floor(prev.overs) + 1 : prev.overs + 0.1).toFixed(1)),
+        runs: prev.runs + Math.floor(Math.random() * 5),
+        wickets: Math.random() > 0.92 && prev.wickets < 10 ? prev.wickets + 1 : prev.wickets
+      }));
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
@@ -99,22 +120,7 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
-        >
-          <span className="text-xs uppercase tracking-widest text-gray-400">Scroll to Explore</span>
-          <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
-            <motion.div 
-              animate={{ y: [0, 48, 48] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "circInOut" }}
-              className="absolute top-0 left-0 w-full h-1/2 bg-primary"
-            />
-          </div>
-        </motion.div>
+
       </section>
 
       {/* Features Section */}
@@ -130,9 +136,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Trophy className="w-10 h-10 text-accent" />,
-                title: "FIFA Approved Turf",
-                desc: "Premium quality artificial grass, providing perfect bounce, grip, and safety for professional play."
+                icon: <Activity className="w-10 h-10 text-accent" />,
+                title: "Pro Cricket Nets",
+                desc: "Fully enclosed, high-tension netting equipped with an automated smart bowling machine capable of 150km/h."
               },
               {
                 icon: <Zap className="w-10 h-10 text-primary" />,
@@ -163,6 +169,220 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Gallery Teaser Section */}
+      <section className="py-24 bg-black relative z-10 border-t border-white/5">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#FFF3B0]">Experience</span>
+              </h2>
+              <p className="text-gray-400 text-lg max-w-xl">
+                Take a look at the elite atmosphere and high-intensity action at ACM Indoor Turf.
+              </p>
+            </div>
+            <Link 
+              href="/gallery"
+              className="inline-flex items-center gap-2 text-primary font-bold hover:text-white transition-colors uppercase tracking-widest text-sm"
+            >
+              View Full Gallery <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="col-span-2 row-span-2 rounded-3xl overflow-hidden relative group aspect-square md:aspect-auto"
+            >
+              <img src="/pro-pitch.png" alt="Pro Pitch" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+                <h4 className="text-white font-bold text-2xl">Pro Futsal League</h4>
+              </div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="rounded-3xl overflow-hidden relative group aspect-square"
+            >
+              <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Action" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="rounded-3xl overflow-hidden relative group aspect-square bg-gray-900"
+            >
+              <img src="/bowling-machine.png" alt="Bowling Machine" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="col-span-2 rounded-3xl overflow-hidden relative group aspect-[2/1]"
+            >
+              <img src="https://images.pexels.com/photos/314154/pexels-photo-314154.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-[#050505] relative z-10 border-t border-white/5">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+              Player <span className="text-primary">Reviews</span>
+            </h2>
+            <p className="text-gray-400 text-lg">Hear what the champions say about our facilities.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { name: "Tariq A.", team: "Dharga FC", text: "The pitch quality is unmatched. Playing here feels like playing in a professional European stadium." },
+              { name: "Rahul S.", team: "Corporate Strikers", text: "We host all our corporate leagues here. The amenities are fantastic and the staff is super professional." },
+              { name: "Zayn M.", team: "Weekend Warriors", text: "The new bowling machine is a game changer for cricket practice. Highly recommend to any serious player." }
+            ].map((review, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="bg-white/5 border border-white/10 p-8 rounded-3xl relative"
+              >
+                <div className="flex text-primary mb-4">
+                  {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-primary" />)}
+                </div>
+                <p className="text-gray-300 italic mb-6">"{review.text}"</p>
+                <div>
+                  <h4 className="text-white font-bold">{review.name}</h4>
+                  <p className="text-xs text-gray-500 uppercase tracking-widest">{review.team}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Unique Feature: Live Match Status & Hall of Fame */}
+      <section className="py-24 bg-[#0a0a0a] relative z-10 border-t border-white/5">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Live Status Widget */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative p-1 rounded-3xl bg-gradient-to-br from-primary/30 to-black overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-primary/10 animate-pulse" />
+              <div className="bg-[#050505] rounded-[22px] p-8 md:p-10 relative z-10">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="relative flex h-4 w-4">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500"></span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white uppercase tracking-widest">Live Action</h3>
+                </div>
+                
+                <div className="space-y-6">
+                  {/* Football Live Score */}
+                  <div className="flex justify-between items-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-full bg-blue-900/50 flex items-center justify-center border border-blue-500">
+                        <Users className="text-blue-400 w-5 h-5" />
+                      </div>
+                      <div>
+                        <p className="text-white font-bold">Real Madrid vs Barcelona</p>
+                        <p className="text-xs text-gray-400">El Clásico - La Liga</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-primary font-bold text-2xl">{footballScore.home} - {footballScore.away}</span>
+                      <p className="text-xs text-red-400 animate-pulse">{footballScore.min}' MIN</p>
+                    </div>
+                  </div>
+
+                  {/* Cricket Live Score */}
+                  <div className="flex justify-between items-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-full bg-green-900/50 flex items-center justify-center border border-green-500">
+                        <Activity className="text-green-400 w-5 h-5" />
+                      </div>
+                      <div>
+                        <p className="text-white font-bold">India vs Australia</p>
+                        <p className="text-xs text-gray-400">ICC World Cup - Final</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-white font-bold text-xl">{cricketScore.runs}/{cricketScore.wickets}</span>
+                      <p className="text-xs text-primary">Overs: {cricketScore.overs}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Live Sports Screening */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent font-bold text-sm mb-4">
+                  <Star className="w-4 h-4 fill-accent" />
+                  <span>Sports Lounge</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+                  Catch the <span className="text-primary">Action Live</span>
+                </h2>
+                <p className="text-gray-400 text-lg">
+                  Don't miss a second of the game. Our premium sports lounge features massive 4K screens broadcasting all major international football and cricket tournaments. Relax with your squad after a tough match.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  <h4 className="text-3xl font-black text-white mb-1 relative z-10">3</h4>
+                  <p className="text-sm text-gray-400 uppercase tracking-widest relative z-10">Massive 4K Screens</p>
+                </div>
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  <h4 className="text-3xl font-black text-white mb-1 relative z-10">24/7</h4>
+                  <p className="text-sm text-gray-400 uppercase tracking-widest relative z-10">Global Broadcasts</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Persistent Floating Booking Button */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+        className="fixed bottom-8 right-8 z-50 md:bottom-10 md:right-10"
+      >
+        <Link 
+          href="/booking"
+          className="group flex items-center justify-center gap-3 bg-primary text-black font-bold px-6 py-4 md:px-8 md:py-4 rounded-full shadow-[0_10px_40px_rgba(16,185,129,0.4)] hover:shadow-[0_10px_50px_rgba(16,185,129,0.7)] hover:-translate-y-1 transition-all duration-300"
+        >
+          <Calendar className="w-5 h-5 group-hover:animate-bounce" />
+          <span className="text-lg hidden sm:block">Book Pitch</span>
+          <span className="sm:hidden">Book</span>
+        </Link>
+      </motion.div>
 
     </div>
   );

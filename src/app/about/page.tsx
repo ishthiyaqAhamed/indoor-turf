@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -24,6 +24,26 @@ export default function AboutPage() {
                 <div>
                   <h4 className="text-white font-bold text-lg mb-1">Address</h4>
                   <p className="text-gray-400">ACM INDOOR TURF, 73/5 Isnapulla Road, Dharga Town</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <Phone className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-lg mb-1">Phone</h4>
+                  <p className="text-gray-400">+94 77 123 4567</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <Mail className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-lg mb-1">Email</h4>
+                  <p className="text-gray-400">info@acmindoorturf.com</p>
                 </div>
               </div>
             </div>

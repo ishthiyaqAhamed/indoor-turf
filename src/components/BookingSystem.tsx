@@ -63,8 +63,8 @@ export default function BookingSystem() {
           </motion.div>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="glass-card rounded-3xl p-6 md:p-10">
+        <div className="max-w-5xl mx-auto">
+          <div className="glass-card rounded-3xl p-6 md:p-12">
             {/* Steps Indicator */}
             <div className="flex items-center justify-between mb-12 relative">
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-white/10 rounded-full z-0" />
@@ -107,7 +107,7 @@ export default function BookingSystem() {
                           : "border-white/10 bg-white/5 hover:border-white/30 hover:scale-[1.01]"
                       )}
                     >
-                      <div className="w-full h-48 relative overflow-hidden">
+                      <div className="w-full h-64 relative overflow-hidden">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
                           src={pitch.image} 
