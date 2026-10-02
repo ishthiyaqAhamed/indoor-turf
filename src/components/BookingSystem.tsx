@@ -354,17 +354,17 @@ export default function BookingSystem() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-6xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
               Secure Your <span className="text-primary">Pitch</span>
             </h2>
-            <p className="text-gray-400 text-lg">
+            <p className="text-gray-400 text-base md:text-lg">
               Experience the ultimate futsal facility. Book your preferred time slot online instantly.
             </p>
           </motion.div>
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="glass-card rounded-3xl p-6 md:p-12">
+          <div className="glass-card rounded-3xl p-4 sm:p-6 md:p-12">
             {/* Steps Indicator */}
             <div className="flex items-center justify-between mb-12 relative no-print">
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-white/10 rounded-full z-0" />
@@ -377,11 +377,11 @@ export default function BookingSystem() {
                 <div 
                   key={s}
                   className={clsx(
-                    "w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm z-10 transition-colors duration-300",
+                    "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-xs md:text-sm z-10 transition-colors duration-300",
                     step >= s ? "bg-primary text-black shadow-[0_0_15px_rgba(16,185,129,0.5)]" : "bg-[#111] text-gray-500 border border-white/10"
                   )}
                 >
-                  {step > s ? <CheckCircle2 className="w-5 h-5" /> : s}
+                  {step > s ? <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> : s}
                 </div>
               ))}
             </div>
@@ -407,7 +407,7 @@ export default function BookingSystem() {
                           : "border-white/10 bg-white/5 hover:border-white/30 hover:scale-[1.01]"
                       )}
                     >
-                      <div className="w-full h-64 relative overflow-hidden">
+                      <div className="w-full h-48 md:h-64 relative overflow-hidden">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
                           src={pitch.image} 
@@ -420,12 +420,12 @@ export default function BookingSystem() {
                           <p className="text-accent font-bold font-mono text-sm">{pitch.price}</p>
                         </div>
                       </div>
-                      <div className="p-5 flex-grow flex flex-col">
+                      <div className="p-4 md:p-5 flex-grow flex flex-col">
                         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary mb-3">
                           <Users className="w-4 h-4" />
                           <span>{pitch.size}</span>
                         </div>
-                        <p className="text-gray-400 text-sm leading-relaxed">
+                        <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
                           {pitch.description}
                         </p>
                       </div>
@@ -866,12 +866,12 @@ export default function BookingSystem() {
 
             {/* Navigation Buttons */}
             {step < 4 && (
-              <div className="flex justify-between items-center mt-12 pt-6 border-t border-white/10 no-print">
+              <div className="flex justify-between items-center mt-8 md:mt-12 pt-6 border-t border-white/10 no-print">
                 <button
                   onClick={handlePrev}
                   disabled={step === 1}
                   className={clsx(
-                    "px-6 py-3 rounded-full font-semibold transition-colors text-sm",
+                    "px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold transition-colors text-xs md:text-sm",
                     step === 1 ? "opacity-0 pointer-events-none" : "text-gray-400 hover:text-white hover:bg-white/5"
                   )}
                 >
@@ -883,28 +883,28 @@ export default function BookingSystem() {
                     onClick={() => setStep(4)}
                     disabled={!otpVerified || !fullName.trim() || !agreedToRules}
                     className={clsx(
-                      "flex items-center gap-2 px-8 py-3 rounded-full font-bold transition-all text-sm",
+                      "flex items-center gap-2 px-6 py-3 md:px-8 md:py-3 rounded-full font-bold transition-all text-xs md:text-sm",
                       !otpVerified || !fullName.trim() || !agreedToRules
                         ? "bg-white/10 text-gray-500 cursor-not-allowed"
                         : "bg-primary text-black hover:bg-primary/90 hover:scale-105 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
                     )}
                   >
                     <span>Confirm Booking</span>
-                    <CheckCircle2 className="w-5 h-5" />
+                    <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" />
                   </button>
                 ) : (
                   <button
                     onClick={handleNext}
                     disabled={(step === 1 && !selectedPitch) || (step === 2 && (!selectedDate || !selectedTime))}
                     className={clsx(
-                      "flex items-center gap-2 px-8 py-3 rounded-full font-bold transition-all text-sm",
+                      "flex items-center gap-2 px-6 py-3 md:px-8 md:py-3 rounded-full font-bold transition-all text-xs md:text-sm",
                       (step === 1 && !selectedPitch) || (step === 2 && (!selectedDate || !selectedTime))
                         ? "bg-white/10 text-gray-500 cursor-not-allowed"
                         : "bg-primary text-black hover:bg-primary/90 hover:scale-105 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
                     )}
                   >
                     <span>Continue</span>
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
                   </button>
                 )}
               </div>

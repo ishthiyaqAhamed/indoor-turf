@@ -114,7 +114,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-9xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.85] mb-6 drop-shadow-2xl"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.85] mb-6 drop-shadow-2xl"
           >
             Play Like <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#059669]">Champions</span>
@@ -124,7 +124,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light"
+            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light"
           >
             Welcome to ACM Indoor Turf. Sri Lanka's most luxurious, professional-grade indoor futsal arena designed for the ultimate sporting experience.
           </motion.p>
@@ -133,11 +133,11 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row items-center gap-6"
+            className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto"
           >
             <Link
               href="/booking"
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-white px-10 py-4 font-bold text-black transition-all hover:scale-105 hover:bg-gray-100"
+              className="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto overflow-hidden rounded-full bg-white px-8 py-3.5 md:px-10 md:py-4 font-bold text-black transition-all hover:scale-105 hover:bg-gray-100"
             >
               <span>Book Your Pitch</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -147,9 +147,9 @@ export default function Home() {
               href="https://www.google.com/maps/place/ACM+INDOOR+TURF/@6.449576,80.006855,18z/data=!4m6!3m5!1s0x3ae22f0043ce219b:0x350532f359799c8!8m2!3d6.4494747!4d80.0068577!16s%2Fg%2F11ntg1swk5?entry=ttu&g_ep=EgoyMDI2MDkyOS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 rounded-full bg-white/5 border border-white/20 px-10 py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-3 w-full sm:w-auto rounded-full bg-white/5 border border-white/20 px-8 py-3.5 md:px-10 md:py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
             >
-              <MapPin className="w-5 h-5" />
+              <MapPin className="w-5 h-5 text-primary" />
               <span>Get Directions</span>
             </a>
           </motion.div>
@@ -161,11 +161,11 @@ export default function Home() {
       {/* Features Section */}
       <section id="facilities" className="py-32 bg-[#050505] relative z-10">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-24">
-            <h2 className="text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
               World Class <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#FFF3B0]">Facilities</span>
             </h2>
-            <p className="text-gray-400 text-lg">Every detail crafted for an elite football experience.</p>
+            <p className="text-gray-400 text-base md:text-lg">Every detail crafted for an elite football experience.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -192,7 +192,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
-                className="glass-card p-10 rounded-3xl group hover:-translate-y-2 transition-transform duration-500"
+                className="glass-card p-6 sm:p-8 md:p-10 rounded-3xl group hover:-translate-y-2 transition-transform duration-500"
               >
                 <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                   {feature.icon}
