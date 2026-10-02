@@ -168,16 +168,16 @@ export default function Home() {
       {/* Booking Section */}
       <BookingSystem />
 
-      {/* Map / Location Section */}
-      <section id="location" className="py-24 bg-[#0a0a0a] relative z-10 border-t border-white/5">
+      {/* About Us / Location Section */}
+      <section id="about" className="py-24 bg-[#0a0a0a] relative z-10 border-t border-white/5">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
               <h2 className="text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-6">
-                Find <span className="text-primary">Us</span>
+                About <span className="text-primary">Us</span>
               </h2>
               <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                Located in the heart of the city, ACM Indoor Turf is easily accessible. We offer ample secure parking for all our guests.
+                Established in 2026, ACM Indoor Turf is Sri Lanka's premier indoor futsal facility. We are dedicated to providing a world-class sporting experience for players of all levels. From our FIFA-approved turf to our luxury amenities, every detail has been meticulously crafted to elevate your game.
               </p>
               
               <div className="space-y-6 mb-10">
@@ -204,7 +204,7 @@ export default function Home() {
             
             <div className="lg:w-1/2 w-full h-[400px] rounded-3xl overflow-hidden glass p-2">
               <iframe
-                src="https://maps.google.com/maps?q=73/5%20Isnapulla%20Road,%20Dharga%20Town&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=ACM%20INDOOR%20TURF,%20Dharga%20Town&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, borderRadius: "1rem" }}

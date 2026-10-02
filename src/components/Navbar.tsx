@@ -20,9 +20,9 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Facilities", href: "#facilities" },
+    { name: "Booking", href: "#book" },
     { name: "Gallery", href: "#gallery" },
-    { name: "Location", href: "#location" },
+    { name: "About Us", href: "#about" },
   ];
 
   return (
