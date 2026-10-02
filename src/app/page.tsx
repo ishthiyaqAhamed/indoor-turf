@@ -71,8 +71,8 @@ export default function Home() {
             playsInline
             className="w-full h-full object-cover"
           >
-            {/* Using a high-quality free football stock video placeholder */}
-            <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+            {/* Using a high-quality free slow-mo football video */}
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-football-player-doing-a-trick-with-the-ball-in-slow-motion-41808-large.mp4" type="video/mp4" />
           </video>
           {/* Overlays for contrast and luxury feel */}
           <div className="absolute inset-0 bg-black/60 z-10" />
