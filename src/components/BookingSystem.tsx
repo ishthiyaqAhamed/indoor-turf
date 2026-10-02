@@ -258,14 +258,12 @@ export default function BookingSystem() {
       const data = await res.json();
       if (data.success) {
         setOtpVerified(true);
-        setStep(4);
       } else {
         setOtpError(data.error || "Invalid OTP code.");
       }
     } catch {
       if (code === generatedOtp || code === "1234") {
         setOtpVerified(true);
-        setStep(4);
       } else {
         setOtpError("Invalid verification code. Please try again.");
       }
@@ -455,43 +453,49 @@ export default function BookingSystem() {
                   />
                 </div>
                 
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-6 font-outfit">Select Time</h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-6">
-                    {timeSlots.map((slot) => (
-                      <button
-                        key={slot.time}
-                        onClick={() => setSelectedTime(slot.time)}
-                        disabled={!slot.available}
-                        className={clsx(
-                          "py-3 px-4 rounded-xl border text-sm font-semibold transition-all duration-300",
-                          !slot.available 
-                            ? "border-red-500/30 bg-red-500/10 text-red-500/50 cursor-not-allowed" 
-                            : selectedTime === slot.time
-                              ? "border-primary bg-primary text-black shadow-[0_0_15px_rgba(16,185,129,0.4)]"
-                              : "border-blue-500/30 bg-blue-500/10 text-blue-100 hover:border-blue-500/60 hover:bg-blue-500/20 hover:text-white"
-                        )}
-                      >
-                        {slot.time}
-                      </button>
-                    ))}
-                  </div>
-                  
-                  <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start text-xs font-bold uppercase tracking-wider text-gray-400">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-blue-500/30 border border-blue-500"></div>
-                      <span>Available</span>
+                {selectedDate && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h3 className="text-2xl font-bold text-white mb-6 font-outfit">Select Time</h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-6">
+                      {timeSlots.map((slot) => (
+                        <button
+                          key={slot.time}
+                          onClick={() => setSelectedTime(slot.time)}
+                          disabled={!slot.available}
+                          className={clsx(
+                            "py-3 px-4 rounded-xl border text-sm font-semibold transition-all duration-300",
+                            !slot.available 
+                              ? "border-red-500/30 bg-red-500/10 text-red-500/50 cursor-not-allowed" 
+                              : selectedTime === slot.time
+                                ? "border-primary bg-primary text-black shadow-[0_0_15px_rgba(16,185,129,0.4)]"
+                                : "border-blue-500/30 bg-blue-500/10 text-blue-100 hover:border-blue-500/60 hover:bg-blue-500/20 hover:text-white"
+                          )}
+                        >
+                          {slot.time}
+                        </button>
+                      ))}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500/30 border border-red-500"></div>
-                      <span>Booked</span>
+                    
+                    <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start text-xs font-bold uppercase tracking-wider text-gray-400">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-blue-500/30 border border-blue-500"></div>
+                        <span>Available</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/30 border border-red-500"></div>
+                        <span>Booked</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+                        <span className="text-primary">Selected</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
-                      <span className="text-primary">Selected</span>
-                    </div>
-                  </div>
-                </div>
+                  </motion.div>
+                )}
               </motion.div>
             )}
 
@@ -503,189 +507,190 @@ export default function BookingSystem() {
                 exit={{ opacity: 0, x: -20 }}
                 className="space-y-6"
               >
-                {!otpSent ? (
-                  <>
-                    <h3 className="text-2xl font-bold text-white mb-2 font-outfit">Your Contact Details</h3>
-                    <p className="text-gray-400 text-sm mb-6">
-                      Please enter your contact details. An OTP code will be sent to your mobile number to verify your booking.
-                    </p>
+                <h3 className="text-2xl font-bold text-white mb-2 font-outfit">Your Contact Details</h3>
+                <p className="text-gray-400 text-sm mb-6">
+                  Please enter your contact details. An OTP code will be sent to your mobile number to verify your booking.
+                </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-sm text-gray-300 font-medium">Full Name <span className="text-primary">*</span></label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-300 font-medium">Full Name <span className="text-primary">*</span></label>
+                    <input 
+                      type="text" 
+                      value={fullName}
+                      onChange={(e) => { setFullName(e.target.value); setOtpError(""); }}
+                      disabled={otpVerified}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600 disabled:opacity-50" 
+                      placeholder="John Doe" 
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-300 font-medium">Phone Number (for SMS OTP) <span className="text-primary">*</span></label>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <div className="relative flex-1">
                         <input 
-                          type="text" 
-                          value={fullName}
-                          onChange={(e) => { setFullName(e.target.value); setOtpError(""); }}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600" 
-                          placeholder="John Doe" 
+                          type="tel" 
+                          value={phoneNumber}
+                          onChange={(e) => { 
+                            setPhoneNumber(e.target.value); 
+                            setOtpError(""); 
+                            if(otpSent) { setOtpSent(false); setOtpDigits(["", "", "", ""]); }
+                          }}
+                          disabled={otpSent || otpVerified}
+                          className="w-full bg-white/5 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600 disabled:opacity-50" 
+                          placeholder="+94 7X XXX XXXX" 
                         />
+                        <Smartphone className="w-5 h-5 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
-
-                      <div className="space-y-2">
-                        <label className="text-sm text-gray-300 font-medium">Phone Number (for SMS OTP) <span className="text-primary">*</span></label>
-                        <div className="relative">
-                          <input 
-                            type="tel" 
-                            value={phoneNumber}
-                            onChange={(e) => { setPhoneNumber(e.target.value); setOtpError(""); }}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600" 
-                            placeholder="+94 7X XXX XXXX" 
-                          />
-                          <Smartphone className="w-5 h-5 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                        </div>
-                      </div>
-
-                      <div className="space-y-2 md:col-span-2">
-                        <label className="text-sm text-gray-300 font-medium">Email Address (Optional)</label>
-                        <input 
-                          type="email" 
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600" 
-                          placeholder="john@example.com" 
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mt-8 bg-black/40 border border-white/10 rounded-2xl p-6 relative overflow-hidden group">
-                      <div className="absolute top-0 left-0 w-1 h-full bg-primary/50 group-hover:bg-primary transition-colors" />
-                      <h4 className="text-white font-bold mb-4 flex items-center gap-2">
-                        <ShieldCheck className="w-5 h-5 text-primary" />
-                        Rules & Regulations
-                      </h4>
-                      <ul className="text-sm text-gray-400 space-y-2 mb-6 list-disc list-inside">
-                        <li>Strictly non-marking indoor shoes or turf shoes only. No metal studs.</li>
-                        <li>No food, chewing gum, or smoking allowed on the pitch.</li>
-                        <li>Please arrive at least 10 minutes prior to your booking time.</li>
-                        <li>Cancellations must be made at least 24 hours in advance.</li>
-                      </ul>
-                      <label className="flex items-center gap-3 cursor-pointer group/checkbox">
-                        <div className="relative flex items-center justify-center w-6 h-6 rounded border border-white/30 bg-white/5 group-hover/checkbox:border-primary transition-colors">
-                          <input 
-                            type="checkbox" 
-                            className="opacity-0 absolute w-full h-full cursor-pointer z-10"
-                            checked={agreedToRules}
-                            onChange={(e) => { setAgreedToRules(e.target.checked); setOtpError(""); }}
-                          />
-                          {agreedToRules && <CheckCircle2 className="w-4 h-4 text-primary absolute pointer-events-none" />}
-                        </div>
-                        <span className="text-sm text-white font-medium group-hover/checkbox:text-primary transition-colors">
-                          I have read and agree to the rules and regulations.
-                        </span>
-                      </label>
-                    </div>
-
-                    {otpError && (
-                      <motion.div 
-                        initial={{ opacity: 0, y: -5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm flex items-center gap-3"
-                      >
-                        <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                        <span>{otpError}</span>
-                      </motion.div>
-                    )}
-                  </>
-                ) : (
-                  /* OTP Verification Screen */
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="max-w-md mx-auto py-4 space-y-6 text-center"
-                  >
-                    <div className="relative w-20 h-20 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto shadow-[0_0_25px_rgba(16,185,129,0.2)]">
-                      <Lock className="w-9 h-9 text-primary" />
-                    </div>
-
-                    <div>
-                      <h3 className="text-2xl font-bold text-white font-outfit mb-2">Verify Mobile Number</h3>
-                      <p className="text-gray-400 text-sm">
-                        Enter the 4-digit OTP code sent to{" "}
-                        <span className="text-white font-semibold font-mono">{phoneNumber}</span>
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => setOtpSent(false)}
-                        className="mt-2 text-xs text-primary hover:underline inline-flex items-center gap-1 font-medium"
-                      >
-                        <Edit3 className="w-3 h-3" /> Change phone number
-                      </button>
-                    </div>
-
-                    {/* Demo SMS Banner for Instant Testing */}
-                    <div className="bg-primary/10 border border-primary/30 rounded-2xl p-4 text-left relative overflow-hidden">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                            <span className="text-xs font-bold text-primary uppercase tracking-wider">SMS Demo Notification</span>
-                          </div>
-                          <p className="text-xs text-gray-300">
-                            Your verification code is: <strong className="text-white font-mono text-base tracking-widest">{generatedOtp}</strong>
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={handleAutoFillOtp}
-                          className="px-3 py-1.5 bg-primary text-black text-xs font-bold rounded-lg hover:bg-primary/90 transition-transform active:scale-95 flex-shrink-0 shadow-[0_0_10px_rgba(16,185,129,0.3)]"
-                        >
-                          Auto-fill Code
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* 4 Digit OTP Inputs */}
-                    <div className="flex items-center justify-center gap-3 my-6">
-                      {otpDigits.map((digit, idx) => (
-                        <input
-                          key={idx}
-                          id={`otp-input-${idx}`}
-                          type="text"
-                          maxLength={1}
-                          value={digit}
-                          onChange={(e) => handleOtpChange(idx, e.target.value)}
-                          onKeyDown={(e) => handleOtpKeyDown(idx, e)}
-                          className={clsx(
-                            "w-14 h-16 text-center text-2xl font-mono font-bold rounded-xl border bg-black/60 text-white focus:outline-none transition-all duration-300 shadow-inner",
-                            digit 
-                              ? "border-primary bg-primary/10 shadow-[0_0_15px_rgba(16,185,129,0.3)]" 
-                              : "border-white/20 focus:border-primary focus:bg-white/5"
-                          )}
-                        />
-                      ))}
-                    </div>
-
-                    {otpError && (
-                      <motion.div 
-                        initial={{ opacity: 0, y: -5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center justify-center gap-2"
-                      >
-                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                        <span>{otpError}</span>
-                      </motion.div>
-                    )}
-
-                    {/* Resend Timer & Button */}
-                    <div className="flex items-center justify-center gap-2 text-sm text-gray-400 pt-2">
-                      <span>Didn't receive code?</span>
-                      {canResend ? (
+                      
+                      {!otpVerified && (
                         <button
                           type="button"
                           onClick={handleSendOtp}
-                          disabled={isSendingOtp}
-                          className="text-primary font-semibold hover:underline flex items-center gap-1 disabled:opacity-50"
+                          disabled={isSendingOtp || !phoneNumber.trim()}
+                          className="px-6 py-3 bg-primary text-black font-bold rounded-xl hover:bg-primary/90 transition-transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.2)]"
                         >
-                          {isSendingOtp ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5" />}
-                          Resend Code
+                          {isSendingOtp ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : (otpSent ? "Resend OTP" : "Verify OTP")}
                         </button>
-                      ) : (
-                        <span className="font-mono text-gray-300">
-                          Resend in <strong className="text-primary">{resendCountdown}s</strong>
-                        </span>
+                      )}
+                      
+                      {otpVerified && (
+                        <div className="px-6 py-3 bg-primary/10 text-primary border border-primary/30 font-bold rounded-xl flex items-center justify-center gap-2 select-none">
+                          <CheckCircle2 className="w-5 h-5" /> Verified
+                        </div>
                       )}
                     </div>
+
+                    {otpSent && !otpVerified && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-4 p-4 border border-primary/30 bg-primary/5 rounded-xl space-y-4 shadow-inner"
+                      >
+                        {/* Demo SMS Banner */}
+                        <div className="bg-black/60 border border-primary/30 rounded-lg p-3 text-left relative overflow-hidden flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-2">
+                              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                              <span className="text-[10px] font-bold text-primary uppercase tracking-wider">Demo SMS Notification</span>
+                            </div>
+                            <p className="text-xs text-gray-300">
+                              Your code is: <strong className="text-white font-mono text-sm tracking-widest">{generatedOtp}</strong>
+                            </p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={handleAutoFillOtp}
+                            className="px-3 py-1.5 bg-primary text-black text-xs font-bold rounded-md hover:bg-primary/90 transition-transform active:scale-95 flex-shrink-0"
+                          >
+                            Auto-fill
+                          </button>
+                        </div>
+
+                        {/* OTP Inputs */}
+                        <div>
+                          <p className="text-xs text-gray-400 mb-2">Enter the 4-digit code:</p>
+                          <div className="flex items-center gap-3">
+                            {otpDigits.map((digit, idx) => (
+                              <input
+                                key={idx}
+                                id={`otp-input-${idx}`}
+                                type="text"
+                                maxLength={1}
+                                value={digit}
+                                onChange={(e) => handleOtpChange(idx, e.target.value)}
+                                onKeyDown={(e) => handleOtpKeyDown(idx, e)}
+                                className={clsx(
+                                  "w-12 h-14 text-center text-xl font-mono font-bold rounded-lg border bg-black/60 text-white focus:outline-none transition-all duration-300 shadow-inner",
+                                  digit 
+                                    ? "border-primary bg-primary/10 shadow-[0_0_10px_rgba(16,185,129,0.2)]" 
+                                    : "border-white/20 focus:border-primary focus:bg-white/5"
+                                )}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center justify-between pt-1">
+                          <button
+                            type="button"
+                            onClick={() => { setOtpSent(false); setOtpDigits(["", "", "", ""]); }}
+                            className="text-xs text-primary hover:underline flex items-center gap-1"
+                          >
+                            <Edit3 className="w-3 h-3" /> Change Number
+                          </button>
+                          
+                          {canResend ? (
+                            <button
+                              type="button"
+                              onClick={handleSendOtp}
+                              disabled={isSendingOtp}
+                              className="text-xs text-primary hover:underline flex items-center gap-1"
+                            >
+                              {isSendingOtp ? <Loader2 className="w-3 h-3 animate-spin" /> : <RefreshCw className="w-3 h-3" />}
+                              Resend
+                            </button>
+                          ) : (
+                            <span className="text-xs font-mono text-gray-500">
+                              Resend in <strong className="text-primary">{resendCountdown}s</strong>
+                            </span>
+                          )}
+                        </div>
+                      </motion.div>
+                    )}
+                  </div>
+
+                  <div className="space-y-2 md:col-span-2">
+                    <label className="text-sm text-gray-300 font-medium">Email Address (Optional)</label>
+                    <input 
+                      type="email" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={otpVerified}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600 disabled:opacity-50" 
+                      placeholder="john@example.com" 
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-8 bg-black/40 border border-white/10 rounded-2xl p-6 relative overflow-hidden group">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-primary/50 group-hover:bg-primary transition-colors" />
+                  <h4 className="text-white font-bold mb-4 flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5 text-primary" />
+                    Rules & Regulations
+                  </h4>
+                  <ul className="text-sm text-gray-400 space-y-2 mb-6 list-disc list-inside">
+                    <li>Strictly non-marking indoor shoes or turf shoes only. No metal studs.</li>
+                    <li>No food, chewing gum, or smoking allowed on the pitch.</li>
+                    <li>Please arrive at least 10 minutes prior to your booking time.</li>
+                    <li>Cancellations must be made at least 24 hours in advance.</li>
+                  </ul>
+                  <label className="flex items-center gap-3 cursor-pointer group/checkbox">
+                    <div className="relative flex items-center justify-center w-6 h-6 rounded border border-white/30 bg-white/5 group-hover/checkbox:border-primary transition-colors">
+                      <input 
+                        type="checkbox" 
+                        className="opacity-0 absolute w-full h-full cursor-pointer z-10"
+                        checked={agreedToRules}
+                        onChange={(e) => { setAgreedToRules(e.target.checked); setOtpError(""); }}
+                        disabled={otpVerified}
+                      />
+                      {agreedToRules && <CheckCircle2 className="w-4 h-4 text-primary absolute pointer-events-none" />}
+                    </div>
+                    <span className="text-sm text-white font-medium group-hover/checkbox:text-primary transition-colors">
+                      I have read and agree to the rules and regulations.
+                    </span>
+                  </label>
+                </div>
+
+                {otpError && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm flex items-center gap-3"
+                  >
+                    <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                    <span>{otpError}</span>
                   </motion.div>
                 )}
               </motion.div>
@@ -874,53 +879,19 @@ export default function BookingSystem() {
                 </button>
                 
                 {step === 3 ? (
-                  !otpSent ? (
-                    <button
-                      onClick={handleSendOtp}
-                      disabled={isSendingOtp || !fullName.trim() || !phoneNumber.trim() || !agreedToRules}
-                      className={clsx(
-                        "flex items-center gap-2 px-8 py-3 rounded-full font-bold transition-all text-sm",
-                        isSendingOtp || !fullName.trim() || !phoneNumber.trim() || !agreedToRules
-                          ? "bg-white/10 text-gray-500 cursor-not-allowed"
-                          : "bg-primary text-black hover:bg-primary/90 hover:scale-105 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
-                      )}
-                    >
-                      {isSendingOtp ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                          <span>Sending OTP...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Send OTP Verification</span>
-                          <ChevronRight className="w-5 h-5" />
-                        </>
-                      )}
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleVerifyOtp()}
-                      disabled={isVerifyingOtp || otpDigits.join("").length < 4}
-                      className={clsx(
-                        "flex items-center gap-2 px-8 py-3 rounded-full font-bold transition-all text-sm",
-                        isVerifyingOtp || otpDigits.join("").length < 4
-                          ? "bg-white/10 text-gray-500 cursor-not-allowed"
-                          : "bg-primary text-black hover:bg-primary/90 hover:scale-105 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
-                      )}
-                    >
-                      {isVerifyingOtp ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                          <span>Verifying Code...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Verify & Confirm Booking</span>
-                          <CheckCircle2 className="w-5 h-5" />
-                        </>
-                      )}
-                    </button>
-                  )
+                  <button
+                    onClick={() => setStep(4)}
+                    disabled={!otpVerified || !fullName.trim() || !agreedToRules}
+                    className={clsx(
+                      "flex items-center gap-2 px-8 py-3 rounded-full font-bold transition-all text-sm",
+                      !otpVerified || !fullName.trim() || !agreedToRules
+                        ? "bg-white/10 text-gray-500 cursor-not-allowed"
+                        : "bg-primary text-black hover:bg-primary/90 hover:scale-105 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                    )}
+                  >
+                    <span>Confirm Booking</span>
+                    <CheckCircle2 className="w-5 h-5" />
+                  </button>
                 ) : (
                   <button
                     onClick={handleNext}
