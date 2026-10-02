@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import clsx from "clsx";
 import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import { jsPDF } from "jspdf";
 
 export default function BookingSystem() {
   const [step, setStep] = useState(1);

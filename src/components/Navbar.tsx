@@ -26,14 +26,15 @@ export default function Navbar() {
   ];
 
   return (
-    <header
-      className={clsx(
-        "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out border-b",
-        isScrolled
-          ? "bg-black/70 backdrop-blur-md py-4 border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-          : "bg-transparent py-6 border-transparent"
-      )}
-    >
+    <>
+      <header
+        className={clsx(
+          "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out border-b",
+          isScrolled
+            ? "bg-black/70 backdrop-blur-md py-4 border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+            : "bg-transparent py-6 border-transparent"
+        )}
+      >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="relative z-50 flex flex-col items-start group">
@@ -78,6 +79,7 @@ export default function Navbar() {
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
+      </header>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -87,7 +89,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 pt-20"
           >
             {navLinks.map((link, i) => (
               <motion.div
@@ -122,6 +124,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
