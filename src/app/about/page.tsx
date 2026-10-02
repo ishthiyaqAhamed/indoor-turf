@@ -70,7 +70,7 @@ export default function AboutPage() {
             </div>
 
             <a 
-              href="https://maps.app.goo.gl/RqcNVquE2nXXiKNc9" 
+              href="https://www.google.com/maps/place/ACM+INDOOR+TURF/@6.449576,80.006855,18z/data=!4m6!3m5!1s0x3ae22f0043ce219b:0x350532f359799c8!8m2!3d6.4494747!4d80.0068577!16s%2Fg%2F11ntg1swk5?entry=ttu&g_ep=EgoyMDI2MDkyOS4wIKXMDSoASAFQAw%3D%3D" 
               target="_blank" 
               rel="noreferrer"
               className="inline-flex items-center gap-2 bg-primary text-black px-10 py-4 rounded-full font-bold hover:bg-white transition-colors text-lg shadow-[0_10px_30px_rgba(16,185,129,0.3)] hover:shadow-[0_10px_40px_rgba(16,185,129,0.5)]"
@@ -79,7 +79,7 @@ export default function AboutPage() {
             </a>
           </div>
           
-          <div className="lg:w-1/2 w-full h-[600px] rounded-3xl overflow-hidden glass p-2 relative group">
+          <div className="lg:w-1/2 w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden glass p-2 relative group">
             <div className="absolute inset-0 bg-primary/10 pointer-events-none group-hover:bg-transparent transition-colors duration-500 z-10" />
             <iframe
               src="https://maps.google.com/maps?q=ACM%20INDOOR%20TURF,%20Dharga%20Town&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -111,7 +111,7 @@ export default function AboutPage() {
               <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold transition-colors">
                 <Share2 className="w-4 h-4" /> Share Link
               </button>
-              <a href="https://maps.app.goo.gl/RqcNVquE2nXXiKNc9" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#4285F4] hover:bg-[#3367D6] text-white font-bold transition-colors shadow-lg">
+              <a href="https://www.google.com/maps/place/ACM+INDOOR+TURF/@6.449576,80.006855,18z/data=!4m6!3m5!1s0x3ae22f0043ce219b:0x350532f359799c8!8m2!3d6.4494747!4d80.0068577!16s%2Fg%2F11ntg1swk5?entry=ttu&g_ep=EgoyMDI2MDkyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#4285F4] hover:bg-[#3367D6] text-white font-bold transition-colors shadow-lg">
                 <ExternalLink className="w-4 h-4" /> Write a Review
               </a>
             </div>
@@ -178,7 +178,7 @@ export default function AboutPage() {
                     <p className="text-xs text-gray-400">Help others find the best indoor facility in Dharga Town.</p>
                   </div>
                 </div>
-                <a href="https://maps.app.goo.gl/RqcNVquE2nXXiKNc9" target="_blank" rel="noreferrer" className="w-full sm:w-auto shrink-0 bg-primary text-black font-bold px-8 py-3 rounded-full hover:bg-white transition-colors text-center">
+                <a href="https://www.google.com/maps/place/ACM+INDOOR+TURF/@6.449576,80.006855,18z/data=!4m6!3m5!1s0x3ae22f0043ce219b:0x350532f359799c8!8m2!3d6.4494747!4d80.0068577!16s%2Fg%2F11ntg1swk5?entry=ttu&g_ep=EgoyMDI2MDkyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" className="w-full sm:w-auto shrink-0 bg-primary text-black font-bold px-8 py-3 rounded-full hover:bg-white transition-colors text-center">
                   Post Review Now
                 </a>
               </div>

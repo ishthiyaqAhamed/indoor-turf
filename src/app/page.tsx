@@ -15,6 +15,11 @@ export default function Home() {
   const [footballScore, setFootballScore] = useState({ home: 2, away: 1, min: 67 });
   const [cricketScore, setCricketScore] = useState({ runs: 215, wickets: 4, overs: 38.2 });
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [liveReviews, setLiveReviews] = useState([
+    { author_name: "Tariq A.", rating: 5, text: "The pitch quality is unmatched. Playing here feels like playing in a professional European stadium." },
+    { author_name: "Rahul S.", rating: 5, text: "We host all our corporate leagues here. The amenities are fantastic and the staff is super professional." },
+    { author_name: "Zayn M.", rating: 5, text: "The new bowling machine is a game changer for cricket practice. Highly recommend to any serious player." }
+  ]);
 
   const galleryImages = [
     "/gallery-user-1.jpg",
@@ -25,6 +30,16 @@ export default function Home() {
   ];
 
   useEffect(() => {
+    // Fetch live Google Reviews
+    fetch("/api/reviews")
+      .then(res => res.json())
+      .then(data => {
+        if (data.reviews && data.reviews.length > 0) {
+          setLiveReviews(data.reviews);
+        }
+      })
+      .catch(err => console.error("Failed to fetch reviews:", err));
+
     const timer = setInterval(() => {
       setFootballScore(prev => ({
         ...prev,
@@ -98,7 +113,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.85] mb-6 drop-shadow-2xl"
+            className="text-5xl md:text-7xl lg:text-9xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.85] mb-6 drop-shadow-2xl"
           >
             Play Like <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#059669]">Champions</span>
@@ -128,7 +143,7 @@ export default function Home() {
             </Link>
             
             <a
-              href="https://maps.app.goo.gl/RqcNVquE2nXXiKNc9"
+              href="https://www.google.com/maps/place/ACM+INDOOR+TURF/@6.449576,80.006855,18z/data=!4m6!3m5!1s0x3ae22f0043ce219b:0x350532f359799c8!8m2!3d6.4494747!4d80.0068577!16s%2Fg%2F11ntg1swk5?entry=ttu&g_ep=EgoyMDI2MDkyOS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-3 rounded-full bg-white/5 border border-white/20 px-10 py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
@@ -290,10 +305,9 @@ export default function Home() {
               
               <ul className="space-y-4 mb-10 relative z-10">
                 {[
-                  "FIFA-approved astroturf",
                   "Professional shock-pad underlay",
                   "High-intensity LED floodlights",
-                  "Changing rooms & showers access",
+                  "Washroom facilities",
                   "Free bibs and premium match ball"
                 ].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
@@ -327,7 +341,7 @@ export default function Home() {
                   "Fully automated bowling machine",
                   "Adjustable speed and spin settings",
                   "Professional cricket practice net",
-                  "Protective gear provided",
+                  "Washroom facilities",
                   "Ideal for individual or duo practice"
                 ].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
@@ -358,11 +372,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { name: "Tariq A.", team: "Dharga FC", text: "The pitch quality is unmatched. Playing here feels like playing in a professional European stadium." },
-              { name: "Rahul S.", team: "Corporate Strikers", text: "We host all our corporate leagues here. The amenities are fantastic and the staff is super professional." },
-              { name: "Zayn M.", team: "Weekend Warriors", text: "The new bowling machine is a game changer for cricket practice. Highly recommend to any serious player." }
-            ].map((review, i) => (
+            {liveReviews.map((review, i) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -372,12 +382,12 @@ export default function Home() {
                 className="bg-white/5 border border-white/10 p-8 rounded-3xl relative"
               >
                 <div className="flex text-primary mb-4">
-                  {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-primary" />)}
+                  {[...Array(review.rating || 5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-primary" />)}
                 </div>
                 <p className="text-gray-300 italic mb-6">"{review.text}"</p>
                 <div>
-                  <h4 className="text-white font-bold">{review.name}</h4>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest">{review.team}</p>
+                  <h4 className="text-white font-bold">{review.author_name}</h4>
+                  <p className="text-xs text-gray-500 uppercase tracking-widest">Google Review</p>
                 </div>
               </motion.div>
             ))}

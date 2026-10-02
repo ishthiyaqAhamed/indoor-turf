@@ -168,7 +168,7 @@ export default function BookingSystem() {
                 
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-6 font-outfit">Select Time</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-6">
                     {timeSlots.map((slot) => (
                       <button
                         key={slot.time}
