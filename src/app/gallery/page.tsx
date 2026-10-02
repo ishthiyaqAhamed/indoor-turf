@@ -1,7 +1,7 @@
 export default function GalleryPage() {
   const images = [
-    "https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "https://images.pexels.com/photos/314154/pexels-photo-314154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "/gallery-user-1.jpg",
+    "/gallery-user-2.jpg",
     "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "https://images.pexels.com/photos/1595655/pexels-photo-1595655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",

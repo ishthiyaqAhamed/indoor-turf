@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Trophy, Shield, Zap, MapPin, Activity, Star, Users, Calendar } from "lucide-react";
+import { ArrowRight, Trophy, Shield, Zap, MapPin, Activity, Star, Users, Calendar, Check } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -14,6 +14,15 @@ export default function Home() {
 
   const [footballScore, setFootballScore] = useState({ home: 2, away: 1, min: 67 });
   const [cricketScore, setCricketScore] = useState({ runs: 215, wickets: 4, overs: 38.2 });
+  const [galleryIndex, setGalleryIndex] = useState(0);
+
+  const galleryImages = [
+    "/gallery-user-1.jpg",
+    "/gallery-user-2.jpg",
+    "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/1595655/pexels-photo-1595655.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&w=800"
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -30,8 +39,16 @@ export default function Home() {
         wickets: Math.random() > 0.92 && prev.wickets < 10 ? prev.wickets + 1 : prev.wickets
       }));
     }, 6000);
-    return () => clearInterval(timer);
-  }, []);
+    
+    const galleryTimer = setInterval(() => {
+      setGalleryIndex(prev => (prev + 1) % galleryImages.length);
+    }, 5000);
+
+    return () => {
+      clearInterval(timer);
+      clearInterval(galleryTimer);
+    };
+  }, [galleryImages.length]);
 
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
@@ -110,13 +127,15 @@ export default function Home() {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             
-            <Link
-              href="/about"
+            <a
+              href="https://maps.app.goo.gl/RqcNVquE2nXXiKNc9"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-3 rounded-full bg-white/5 border border-white/20 px-10 py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
             >
               <MapPin className="w-5 h-5" />
               <span>Get Directions</span>
-            </Link>
+            </a>
           </motion.div>
         </motion.div>
 
@@ -225,10 +244,105 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="col-span-2 rounded-3xl overflow-hidden relative group aspect-[2/1]"
+              className="col-span-2 rounded-3xl overflow-hidden relative group aspect-[2/1] bg-black"
             >
-              <img src="https://images.pexels.com/photos/314154/pexels-photo-314154.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <motion.img 
+                key={galleryIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                src={galleryImages[galleryIndex]} 
+                alt="Turf Gallery" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
+              />
+              <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex gap-2">
+                {galleryImages.map((_, i) => (
+                  <div key={i} className={`w-2 h-2 rounded-full transition-colors ${i === galleryIndex ? 'bg-primary' : 'bg-white/30'}`} />
+                ))}
+              </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-24 bg-black relative z-10 border-t border-white/5">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+              Simple <span className="text-primary">Pricing</span>
+            </h2>
+            <p className="text-gray-400 text-lg">Transparent rates for world-class facilities. No hidden fees.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Pro Futsal Pitch */}
+            <div className="glass-card rounded-[2rem] p-8 md:p-12 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors duration-500" />
+              
+              <h3 className="text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Pro Futsal Pitch</h3>
+              <p className="text-gray-400 mb-6 relative z-10">Perfect for 5-a-side matches, training, and tournaments.</p>
+              
+              <div className="flex items-baseline gap-2 mb-8 relative z-10">
+                <span className="text-5xl font-black text-white">Rs. 4,500</span>
+                <span className="text-gray-400 font-bold">/ hr</span>
+              </div>
+              
+              <ul className="space-y-4 mb-10 relative z-10">
+                {[
+                  "FIFA-approved astroturf",
+                  "Professional shock-pad underlay",
+                  "High-intensity LED floodlights",
+                  "Changing rooms & showers access",
+                  "Free bibs and premium match ball"
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-4 h-4 text-primary" />
+                    </div>
+                    <span className="text-gray-300">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <Link href="/booking" className="block w-full py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-center hover:bg-primary hover:text-black transition-colors relative z-10 shadow-[0_10px_30px_rgba(16,185,129,0.1)] group-hover:shadow-[0_10px_40px_rgba(16,185,129,0.3)]">
+                Book Futsal Pitch
+              </Link>
+            </div>
+
+            {/* Bowling Machine Pitch */}
+            <div className="glass-card rounded-[2rem] p-8 md:p-12 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#4285F4]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-[#4285F4]/20 transition-colors duration-500" />
+              
+              <h3 className="text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Bowling Machine Pitch</h3>
+              <p className="text-gray-400 mb-6 relative z-10">Advanced indoor cricket practice with automated delivery.</p>
+              
+              <div className="flex items-baseline gap-2 mb-8 relative z-10">
+                <span className="text-5xl font-black text-white">Rs. 3,500</span>
+                <span className="text-gray-400 font-bold">/ hr</span>
+              </div>
+              
+              <ul className="space-y-4 mb-10 relative z-10">
+                {[
+                  "Fully automated bowling machine",
+                  "Adjustable speed and spin settings",
+                  "Professional cricket practice net",
+                  "Protective gear provided",
+                  "Ideal for individual or duo practice"
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-[#4285F4]/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-4 h-4 text-[#4285F4]" />
+                    </div>
+                    <span className="text-gray-300">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <Link href="/booking" className="block w-full py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-center hover:bg-[#4285F4] hover:text-white transition-colors relative z-10 shadow-[0_10px_30px_rgba(66,133,244,0.1)] group-hover:shadow-[0_10px_40px_rgba(66,133,244,0.3)]">
+                Book Cricket Pitch
+              </Link>
+            </div>
           </div>
         </div>
       </section>

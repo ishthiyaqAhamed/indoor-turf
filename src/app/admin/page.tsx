@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Calendar, Users, DollarSign, Activity, CheckCircle, XCircle, Clock, Edit, Trash2, Plus } from "lucide-react";
+import { Calendar, Users, DollarSign, Activity, CheckCircle, XCircle, Clock, Edit, Trash2, Plus, Image as ImageIcon, Upload } from "lucide-react";
 
 export default function AdminPortal() {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -25,6 +25,13 @@ export default function AdminPortal() {
     { id: 1, title: "Happy Children's Day!", desc: "50% off for all players under 16 today. Use code KIDS50 at checkout.", status: "Active" },
     { id: 2, title: "Weekend Madness", desc: "Book 2 hours on the Pro Pitch this weekend and get 30 mins free.", status: "Active" },
     { id: 3, title: "Corporate Leagues", desc: "Special packages available for monthly corporate bookings.", status: "Inactive" },
+  ]);
+
+  const [galleryImages, setGalleryImages] = useState([
+    { id: 1, src: "/gallery-user-1.jpg" },
+    { id: 2, src: "/gallery-user-2.jpg" },
+    { id: 3, src: "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
+    { id: 4, src: "https://images.pexels.com/photos/1595655/pexels-photo-1595655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
   ]);
 
   const getStatusColor = (status: string) => {
@@ -65,6 +72,12 @@ export default function AdminPortal() {
               className={`px-6 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === "billboard" ? "bg-primary text-black" : "text-gray-400 hover:text-white"}`}
             >
               Billboard
+            </button>
+            <button 
+              onClick={() => setActiveTab("gallery")}
+              className={`px-6 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === "gallery" ? "bg-primary text-black" : "text-gray-400 hover:text-white"}`}
+            >
+              Gallery
             </button>
           </div>
         </div>
@@ -177,6 +190,41 @@ export default function AdminPortal() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {activeTab === "gallery" && (
+          <div className="glass-card rounded-3xl overflow-hidden p-6 md:p-8">
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h3 className="text-2xl font-bold text-white font-outfit mb-2">Gallery Manager</h3>
+                <p className="text-sm text-gray-400">Upload new images to the public gallery.</p>
+              </div>
+              <button className="flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-full hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:scale-105 transition-all">
+                <Upload className="w-5 h-5" /> Upload Image
+              </button>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {galleryImages.map((image) => (
+                <div key={image.id} className="group relative aspect-square rounded-2xl overflow-hidden bg-black/50 border border-white/10">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={image.src} alt="Gallery" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-40" />
+                  
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button className="flex items-center gap-2 bg-red-500 text-white font-bold px-4 py-2 rounded-full hover:bg-red-600 transition-colors shadow-lg">
+                      <Trash2 className="w-4 h-4" /> Remove
+                    </button>
+                  </div>
+                </div>
+              ))}
+              
+              {/* Empty state / Add new button */}
+              <button className="aspect-square rounded-2xl border-2 border-dashed border-white/20 hover:border-primary/50 hover:bg-primary/5 transition-colors flex flex-col items-center justify-center gap-4 text-gray-500 hover:text-primary">
+                <ImageIcon className="w-10 h-10" />
+                <span className="font-bold">Add New Photo</span>
+              </button>
             </div>
           </div>
         )}
