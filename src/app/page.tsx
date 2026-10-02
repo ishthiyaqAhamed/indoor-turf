@@ -86,8 +86,9 @@ export default function Home() {
             playsInline
             className="w-full h-full object-cover"
           >
-            {/* Using a high-quality free slow-mo football video */}
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-football-player-doing-a-trick-with-the-ball-in-slow-motion-41808-large.mp4" type="video/mp4" />
+            {/* Slow-mo Soccer Ball Hero Video */}
+            <source src="/hero-video.mp4" type="video/mp4" />
+            <source src="https://videos.pexels.com/video-files/853889/853889-hd_1920_1080_25fps.mp4" type="video/mp4" />
           </video>
           {/* Overlays for contrast and luxury feel */}
           <div className="absolute inset-0 bg-black/60 z-10" />
