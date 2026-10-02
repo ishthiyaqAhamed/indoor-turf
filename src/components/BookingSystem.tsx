@@ -12,14 +12,29 @@ export default function BookingSystem() {
   const [selectedPitch, setSelectedPitch] = useState<string>("");
 
   const timeSlots = [
-    "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", 
-    "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM"
+    "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
+    "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", 
+    "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM",
+    "11:00 PM", "12:00 AM"
   ];
 
   const pitches = [
-    { id: "p1", name: "Pitch A - Pro", size: "5v5", price: "Rs. 4,500/hr" },
-    { id: "p2", name: "Pitch B - Standard", size: "5v5", price: "Rs. 3,500/hr" },
-    { id: "p3", name: "Pitch C - Elite", size: "7v7", price: "Rs. 6,000/hr" },
+    { 
+      id: "pro", 
+      name: "Pro Futsal Pitch", 
+      size: "Futsal (5v5)", 
+      price: "Rs. 4,500/hr",
+      image: "/pro-pitch.png",
+      description: "FIFA approved astroturf with shock pads. Perfect for competitive 5-a-side matches."
+    },
+    { 
+      id: "bowling", 
+      name: "Bowling Machine Pitch", 
+      size: "Cricket Practice", 
+      price: "Rs. 3,500/hr",
+      image: "/bowling-machine.png",
+      description: "Professional indoor cricket net equipped with a fully automated bowling machine."
+    }
   ];
 
   const handleNext = () => setStep(prev => Math.min(prev + 1, 4));
@@ -79,24 +94,40 @@ export default function BookingSystem() {
                 className="space-y-6"
               >
                 <h3 className="text-2xl font-bold text-white mb-6 font-outfit">Select Pitch</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {pitches.map((pitch) => (
                     <button
                       key={pitch.id}
                       onClick={() => setSelectedPitch(pitch.id)}
                       className={clsx(
-                        "p-6 rounded-2xl border text-left transition-all duration-300 group",
+                        "rounded-2xl border text-left transition-all duration-300 group overflow-hidden flex flex-col",
                         selectedPitch === pitch.id
-                          ? "border-primary bg-primary/10 shadow-[0_0_20px_rgba(16,185,129,0.15)]"
-                          : "border-white/10 bg-white/5 hover:border-white/30"
+                          ? "border-primary bg-primary/10 shadow-[0_0_20px_rgba(16,185,129,0.15)] scale-[1.02]"
+                          : "border-white/10 bg-white/5 hover:border-white/30 hover:scale-[1.01]"
                       )}
                     >
-                      <h4 className="text-xl font-bold text-white mb-2">{pitch.name}</h4>
-                      <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                        <Users className="w-4 h-4" />
-                        <span>{pitch.size} Format</span>
+                      <div className="w-full h-48 relative overflow-hidden">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img 
+                          src={pitch.image} 
+                          alt={pitch.name} 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
+                        <div className="absolute bottom-4 left-4">
+                          <h4 className="text-xl font-bold text-white mb-1">{pitch.name}</h4>
+                          <p className="text-accent font-bold font-mono text-sm">{pitch.price}</p>
+                        </div>
                       </div>
-                      <p className="text-accent font-bold font-mono">{pitch.price}</p>
+                      <div className="p-5 flex-grow flex flex-col">
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary mb-3">
+                          <Users className="w-4 h-4" />
+                          <span>{pitch.size}</span>
+                        </div>
+                        <p className="text-gray-400 text-sm leading-relaxed">
+                          {pitch.description}
+                        </p>
+                      </div>
                     </button>
                   ))}
                 </div>

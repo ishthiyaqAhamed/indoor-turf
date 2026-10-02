@@ -20,9 +20,9 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Booking", href: "#book" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "About Us", href: "#about" },
+    { name: "Booking", href: "/booking" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "About Us", href: "/about" },
   ];
 
   return (
@@ -62,7 +62,7 @@ export default function Navbar() {
         {/* Call to Action */}
         <div className="hidden md:flex items-center gap-4">
           <Link
-            href="#book"
+            href="/booking"
             className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-8 py-3 font-semibold text-primary-foreground shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:scale-105"
           >
             <Calendar className="w-4 h-4" />
@@ -111,7 +111,7 @@ export default function Navbar() {
               transition={{ delay: 0.4 }}
             >
               <Link
-                href="#book"
+                href="/booking"
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-4 flex items-center gap-2 rounded-full bg-primary px-10 py-4 font-bold text-primary-foreground"
               >

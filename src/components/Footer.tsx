@@ -53,10 +53,10 @@ export default function Footer() {
                 <Link href="#facilities" className="text-gray-400 hover:text-primary transition-colors text-sm">Our Facilities</Link>
               </li>
               <li>
-                <Link href="#book" className="text-gray-400 hover:text-primary transition-colors text-sm">Book a Pitch</Link>
+                <Link href="/booking" className="text-gray-400 hover:text-primary transition-colors text-sm">Book a Pitch</Link>
               </li>
               <li>
-                <Link href="#gallery" className="text-gray-400 hover:text-primary transition-colors text-sm">Gallery</Link>
+                <Link href="/gallery" className="text-gray-400 hover:text-primary transition-colors text-sm">Gallery</Link>
               </li>
               <li>
                 <Link href="#rules" className="text-gray-400 hover:text-primary transition-colors text-sm">Rules & Regulations</Link>
