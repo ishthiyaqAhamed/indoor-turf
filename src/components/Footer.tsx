@@ -59,7 +59,7 @@ export default function Footer() {
                 <Link href="/gallery" className="text-gray-400 hover:text-primary transition-colors text-sm">Gallery</Link>
               </li>
               <li>
-                <Link href="#rules" className="text-gray-400 hover:text-primary transition-colors text-sm">Rules & Regulations</Link>
+                <Link href="/rules" className="text-gray-400 hover:text-primary transition-colors text-sm">Rules & Regulations</Link>
               </li>
             </ul>
           </div>

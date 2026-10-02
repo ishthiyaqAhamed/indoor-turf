@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar as CalendarIcon, Clock, Users, ChevronRight, CheckCircle2 } from "lucide-react";
+import { Calendar as CalendarIcon, Clock, Users, ChevronRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import clsx from "clsx";
 
 export default function BookingSystem() {
@@ -10,6 +10,7 @@ export default function BookingSystem() {
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [selectedPitch, setSelectedPitch] = useState<string>("");
+  const [agreedToRules, setAgreedToRules] = useState(false);
 
   const timeSlots = [
     "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
@@ -197,6 +198,34 @@ export default function BookingSystem() {
                     <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" placeholder="john@example.com" />
                   </div>
                 </div>
+
+                <div className="mt-8 bg-black/40 border border-white/10 rounded-2xl p-6 relative overflow-hidden group">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-primary/50 group-hover:bg-primary transition-colors" />
+                  <h4 className="text-white font-bold mb-4 flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5 text-primary" />
+                    Rules & Regulations
+                  </h4>
+                  <ul className="text-sm text-gray-400 space-y-2 mb-6 list-disc list-inside">
+                    <li>Strictly non-marking indoor shoes or turf shoes only. No metal studs.</li>
+                    <li>No food, chewing gum, or smoking allowed on the pitch.</li>
+                    <li>Please arrive at least 10 minutes prior to your booking time.</li>
+                    <li>Cancellations must be made at least 24 hours in advance.</li>
+                  </ul>
+                  <label className="flex items-center gap-3 cursor-pointer group/checkbox">
+                    <div className="relative flex items-center justify-center w-6 h-6 rounded border border-white/30 bg-white/5 group-hover/checkbox:border-primary transition-colors">
+                      <input 
+                        type="checkbox" 
+                        className="opacity-0 absolute w-full h-full cursor-pointer z-10"
+                        checked={agreedToRules}
+                        onChange={(e) => setAgreedToRules(e.target.checked)}
+                      />
+                      {agreedToRules && <CheckCircle2 className="w-4 h-4 text-primary absolute pointer-events-none" />}
+                    </div>
+                    <span className="text-sm text-white font-medium group-hover/checkbox:text-primary transition-colors">
+                      I have read and agree to the rules and regulations.
+                    </span>
+                  </label>
+                </div>
               </motion.div>
             )}
 
@@ -259,10 +288,10 @@ export default function BookingSystem() {
                 
                 <button
                   onClick={handleNext}
-                  disabled={(step === 1 && !selectedPitch) || (step === 2 && (!selectedDate || !selectedTime))}
+                  disabled={(step === 1 && !selectedPitch) || (step === 2 && (!selectedDate || !selectedTime)) || (step === 3 && !agreedToRules)}
                   className={clsx(
                     "flex items-center gap-2 px-8 py-3 rounded-full font-bold transition-all",
-                    (step === 1 && !selectedPitch) || (step === 2 && (!selectedDate || !selectedTime))
+                    (step === 1 && !selectedPitch) || (step === 2 && (!selectedDate || !selectedTime)) || (step === 3 && !agreedToRules)
                       ? "bg-white/10 text-gray-500 cursor-not-allowed"
                       : "bg-primary text-black hover:bg-primary/90 hover:scale-105 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
                   )}

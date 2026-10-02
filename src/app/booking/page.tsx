@@ -8,6 +8,15 @@ import { useState, useEffect } from "react";
 const offers = [
   {
     id: 1,
+    tag: "Special Promo",
+    title: "Children's",
+    highlight: "Day Special",
+    description: "Celebrate Children's Day! Get 50% OFF on all morning bookings for kids under 15. Let the young champions play on the best turf in town.",
+    image: "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    gradient: "from-emerald-900/90 via-black/80 to-[#1a1a1a]/90"
+  },
+  {
+    id: 2,
     tag: "Limited Time Offer",
     title: "Weekend",
     highlight: "Madness!",

@@ -62,11 +62,11 @@ export default function Navbar() {
         {/* Call to Action */}
         <div className="hidden md:flex items-center gap-4">
           <Link
-            href="/booking"
+            href="/admin"
             className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-8 py-3 font-semibold text-primary-foreground shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:scale-105"
           >
-            <Calendar className="w-4 h-4" />
-            <span>Book Now</span>
+            <Shield className="w-4 h-4" />
+            <span>Admin</span>
           </Link>
         </div>
 
