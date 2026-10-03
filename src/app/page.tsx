@@ -98,77 +98,113 @@ export default function Home() {
 
         <motion.div 
           style={{ opacity, y }}
-          className="container mx-auto px-6 relative z-20 flex flex-col items-center text-center mt-20"
+          className="container mx-auto px-6 relative z-20 h-full w-full flex flex-col justify-end pb-12 md:pb-0 md:justify-center md:items-center text-left md:text-center mt-0 md:mt-20"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
-          >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-medium tracking-widest uppercase text-gray-300">Open 24/7 in Colombo</span>
-          </motion.div>
+          {/* Mobile specific layout (bottom anchored) */}
+          <div className="md:hidden w-full bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-2xl relative overflow-hidden mb-6">
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent pointer-events-none" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 mb-4 border border-white/5">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <span className="text-[10px] font-bold tracking-widest uppercase text-gray-200">Open 24/7</span>
+            </div>
+            <h1 className="text-4xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.9] mb-3">
+              Play Like <br />
+              <span className="text-primary">Champions</span>
+            </h1>
+            <p className="text-xs text-gray-300 font-light mb-6">
+              Sri Lanka's most luxurious, professional-grade indoor futsal arena.
+            </p>
+            <div className="flex gap-3">
+              <Link
+                href="/booking"
+                className="flex-1 flex justify-center items-center gap-2 rounded-xl bg-white px-4 py-3.5 font-bold text-black hover:bg-gray-200 transition-colors"
+              >
+                Book Pitch
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <a
+                href="https://www.google.com/maps/place/ACM+INDOOR+TURF"
+                target="_blank"
+                rel="noreferrer"
+                className="w-14 flex justify-center items-center rounded-xl bg-white/10 border border-white/20 text-white backdrop-blur-md hover:bg-white/20 transition-colors"
+              >
+                <MapPin className="w-5 h-5 text-primary" />
+              </a>
+            </div>
+          </div>
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.85] mb-4 md:mb-6 drop-shadow-2xl"
-          >
-            Play Like <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#059669]">Champions</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-sm sm:text-base md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 md:mb-10 font-light"
-          >
-            Welcome to ACM Indoor Turf. Sri Lanka's most luxurious, professional-grade indoor futsal arena designed for the ultimate sporting experience.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto"
-          >
-            <Link
-              href="/booking"
-              className="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto overflow-hidden rounded-full bg-white px-8 py-3.5 md:px-10 md:py-4 font-bold text-black transition-all hover:scale-105 hover:bg-gray-100"
+          {/* Desktop specific layout (centered) */}
+          <div className="hidden md:flex flex-col items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
             >
-              <span>Book Your Pitch</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            
-            <a
-              href="https://www.google.com/maps/place/ACM+INDOOR+TURF/@6.449576,80.006855,18z/data=!4m6!3m5!1s0x3ae22f0043ce219b:0x350532f359799c8!8m2!3d6.4494747!4d80.0068577!16s%2Fg%2F11ntg1swk5?entry=ttu&g_ep=EgoyMDI2MDkyOS4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-3 w-full sm:w-auto rounded-full bg-white/5 border border-white/20 px-8 py-3.5 md:px-10 md:py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span className="text-sm font-medium tracking-widest uppercase text-gray-300">Open 24/7 in Colombo</span>
+            </motion.div>
+
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-5xl md:text-7xl lg:text-9xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.85] mb-6 drop-shadow-2xl"
             >
-              <MapPin className="w-5 h-5 text-primary" />
-              <span>Get Directions</span>
-            </a>
-          </motion.div>
+              Play Like <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#059669]">Champions</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light"
+            >
+              Welcome to ACM Indoor Turf. Sri Lanka's most luxurious, professional-grade indoor futsal arena designed for the ultimate sporting experience.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex items-center gap-6"
+            >
+              <Link
+                href="/booking"
+                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-10 py-4 font-bold text-black transition-all hover:scale-105 hover:bg-gray-100"
+              >
+                <span>Book Your Pitch</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              
+              <a
+                href="https://www.google.com/maps/place/ACM+INDOOR+TURF/@6.449576,80.006855,18z"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-3 rounded-full bg-white/5 border border-white/20 px-10 py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
+              >
+                <MapPin className="w-5 h-5 text-primary" />
+                <span>Get Directions</span>
+              </a>
+            </motion.div>
+          </div>
         </motion.div>
 
 
       </section>
 
       {/* Features Section */}
-      <section id="facilities" className="py-32 bg-[#050505] relative z-10">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+      <section id="facilities" className="py-16 md:py-32 bg-[#050505] relative z-10 overflow-hidden">
+        <div className="container mx-auto px-0 md:px-12">
+          <div className="text-left md:text-center max-w-3xl mx-auto mb-8 md:mb-24 px-6 md:px-0">
+            <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-2 md:mb-4">
               World Class <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#FFF3B0]">Facilities</span>
             </h2>
             <p className="text-gray-400 text-sm md:text-lg">Every detail crafted for an elite football experience.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-8 md:grid md:grid-cols-3 md:gap-8 md:px-0 md:pb-0 hide-scrollbar">
             {[
               {
                 icon: <Activity className="w-10 h-10 text-accent" />,
@@ -192,13 +228,15 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
-                className="glass-card p-5 sm:p-6 md:p-10 rounded-2xl md:rounded-3xl group hover:-translate-y-2 transition-transform duration-500"
+                className="glass-card p-6 md:p-10 rounded-3xl group hover:-translate-y-2 transition-transform duration-500 min-w-[85vw] md:min-w-0 snap-center shrink-0 flex flex-col justify-between h-[280px] md:h-auto border border-white/5"
               >
-                <div className="w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500">
-                  <div className="scale-75 md:scale-100">{feature.icon}</div>
+                <div className="w-14 h-14 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                  <div className="scale-75 md:scale-100 text-white">{feature.icon}</div>
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4 font-outfit">{feature.title}</h3>
-                <p className="text-gray-400 text-xs md:text-base leading-relaxed">{feature.desc}</p>
+                <div>
+                  <h3 className="text-2xl md:text-2xl font-bold text-white mb-2 md:mb-4 font-outfit tracking-tight">{feature.title}</h3>
+                  <p className="text-gray-400 text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">{feature.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -206,11 +244,11 @@ export default function Home() {
       </section>
 
       {/* Gallery Teaser Section */}
-      <section className="py-16 md:py-24 bg-black relative z-10 border-t border-white/5">
+      <section className="py-16 md:py-24 bg-black relative z-10 border-t border-white/5 overflow-hidden">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-4 md:gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-16 gap-4 md:gap-6">
             <div>
-              <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+              <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-2 md:mb-4">
                 The <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#FFF3B0]">Experience</span>
               </h2>
               <p className="text-gray-400 text-sm md:text-lg max-w-xl">
@@ -225,16 +263,16 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 md:pb-0 md:grid md:grid-cols-4 md:gap-4 hide-scrollbar -mx-6 px-6 md:mx-0 md:px-0">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="col-span-2 row-span-2 rounded-3xl overflow-hidden relative group aspect-square md:aspect-auto"
+              className="col-span-2 row-span-2 rounded-[2rem] md:rounded-3xl overflow-hidden relative group min-w-[85vw] md:min-w-0 snap-center shrink-0 h-[400px] md:h-auto aspect-square md:aspect-auto"
             >
-              <img src="/pro-pitch.png" alt="Pro Pitch" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
-                <h4 className="text-white font-bold text-2xl">Pro Futsal League</h4>
+              <img src="/pro-pitch.png" alt="Pro Pitch" className="w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 md:p-8">
+                <h4 className="text-white font-bold text-xl md:text-2xl">Pro Futsal League</h4>
               </div>
             </motion.div>
             <motion.div 
@@ -242,25 +280,25 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="rounded-3xl overflow-hidden relative group aspect-square"
+              className="rounded-[2rem] md:rounded-3xl overflow-hidden relative group min-w-[70vw] md:min-w-0 snap-center shrink-0 h-[400px] md:h-auto aspect-[3/4] md:aspect-square"
             >
-              <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Action" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Action" className="w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-700" />
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="rounded-3xl overflow-hidden relative group aspect-square bg-gray-900"
+              className="rounded-[2rem] md:rounded-3xl overflow-hidden relative group bg-gray-900 min-w-[70vw] md:min-w-0 snap-center shrink-0 h-[400px] md:h-auto aspect-[3/4] md:aspect-square"
             >
-              <img src="/bowling-machine.png" alt="Bowling Machine" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <img src="/bowling-machine.png" alt="Bowling Machine" className="w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-700" />
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="col-span-2 rounded-3xl overflow-hidden relative group aspect-[2/1] bg-black"
+              className="col-span-2 rounded-[2rem] md:rounded-3xl overflow-hidden relative group bg-black min-w-[85vw] md:min-w-0 snap-center shrink-0 h-[400px] md:h-auto aspect-[4/3] md:aspect-[2/1]"
             >
               <motion.img 
                 key={galleryIndex}
@@ -282,25 +320,25 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16 md:py-24 bg-black relative z-10 border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+      <section className="py-16 md:py-24 bg-black relative z-10 border-t border-white/5 overflow-hidden">
+        <div className="container mx-auto px-0 md:px-12">
+          <div className="text-left md:text-center max-w-3xl mx-auto mb-8 md:mb-16 px-6 md:px-0">
             <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
               Simple <span className="text-primary">Pricing</span>
             </h2>
             <p className="text-gray-400 text-sm md:text-lg">Transparent rates for world-class facilities. No hidden fees.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-8 md:grid md:grid-cols-2 md:gap-8 max-w-4xl mx-auto md:px-0 md:pb-0 hide-scrollbar">
             {/* Pro Futsal Pitch */}
-            <div className="glass-card rounded-[2rem] p-6 md:p-12 relative overflow-hidden group">
+            <div className="glass-card rounded-[2rem] p-8 md:p-12 relative overflow-hidden group min-w-[85vw] md:min-w-0 snap-center shrink-0 border border-white/5">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors duration-500" />
               
-              <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Pro Futsal Pitch</h3>
+              <h3 className="text-2xl md:text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Pro Futsal Pitch</h3>
               <p className="text-gray-400 text-sm md:text-base mb-6 relative z-10">Perfect for 5-a-side matches, training, and tournaments.</p>
               
-              <div className="flex items-baseline gap-2 mb-6 md:mb-8 relative z-10">
-                <span className="text-4xl md:text-5xl font-black text-white">Rs. 4,500</span>
+              <div className="flex items-baseline gap-2 mb-8 md:mb-8 relative z-10">
+                <span className="text-5xl md:text-5xl font-black text-white">Rs. 4,500</span>
                 <span className="text-gray-400 font-bold">/ hr</span>
               </div>
               
@@ -326,14 +364,14 @@ export default function Home() {
             </div>
 
             {/* Bowling Machine Pitch */}
-            <div className="glass-card rounded-[2rem] p-6 md:p-12 relative overflow-hidden group">
+            <div className="glass-card rounded-[2rem] p-8 md:p-12 relative overflow-hidden group min-w-[85vw] md:min-w-0 snap-center shrink-0 border border-white/5">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#4285F4]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-[#4285F4]/20 transition-colors duration-500" />
               
-              <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Bowling Machine Pitch</h3>
+              <h3 className="text-2xl md:text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Bowling Machine Pitch</h3>
               <p className="text-gray-400 text-sm md:text-base mb-6 relative z-10">Advanced indoor cricket practice with automated delivery.</p>
               
-              <div className="flex items-baseline gap-2 mb-6 md:mb-8 relative z-10">
-                <span className="text-4xl md:text-5xl font-black text-white">Rs. 3,500</span>
+              <div className="flex items-baseline gap-2 mb-8 md:mb-8 relative z-10">
+                <span className="text-5xl md:text-5xl font-black text-white">Rs. 3,500</span>
                 <span className="text-gray-400 font-bold">/ hr</span>
               </div>
               
@@ -363,16 +401,16 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-[#050505] relative z-10 border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+      <section className="py-16 md:py-24 bg-[#050505] relative z-10 border-t border-white/5 overflow-hidden">
+        <div className="container mx-auto px-0 md:px-12">
+          <div className="text-left md:text-center max-w-3xl mx-auto mb-8 md:mb-16 px-6 md:px-0">
+            <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-2 md:mb-4">
               Player <span className="text-primary">Reviews</span>
             </h2>
             <p className="text-gray-400 text-sm md:text-lg">Hear what the champions say about our facilities.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-8 md:grid md:grid-cols-3 md:gap-8 md:px-0 md:pb-0 hide-scrollbar">
             {liveReviews.map((review, i) => (
               <motion.div 
                 key={i}
@@ -380,7 +418,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl relative"
+                className="bg-white/5 border border-white/10 p-8 md:p-8 rounded-3xl relative min-w-[85vw] md:min-w-0 snap-center shrink-0 flex flex-col justify-between"
               >
                 <div className="flex text-primary mb-4">
                   {[...Array(review.rating || 5)].map((_, j) => <Star key={j} className="w-3 h-3 md:w-4 md:h-4 fill-primary" />)}

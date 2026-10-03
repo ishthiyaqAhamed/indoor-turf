@@ -342,12 +342,12 @@ export default function BookingSystem() {
   const currentPitchObj = pitches.find(p => p.id === selectedPitch);
 
   return (
-    <section id="book" className="py-32 relative z-10 bg-black">
+    <section id="book" className="py-16 md:py-32 relative z-10 bg-black">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
       
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 no-print">
+      <div className="container mx-auto px-0 md:px-12 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16 no-print px-6 md:px-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -364,9 +364,9 @@ export default function BookingSystem() {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="glass-card rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-12">
+          <div className="md:glass-card md:rounded-3xl p-6 md:p-12 md:bg-white/5 border-y border-white/5 md:border-x md:border-white/10">
             {/* Steps Indicator */}
-            <div className="flex items-center justify-between mb-8 md:mb-12 relative no-print">
+            <div className="flex items-center justify-between mb-8 md:mb-12 relative no-print px-2 md:px-0">
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-white/10 rounded-full z-0" />
               <div 
                 className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-primary rounded-full z-0 transition-all duration-500"
@@ -378,7 +378,7 @@ export default function BookingSystem() {
                   key={s}
                   className={clsx(
                     "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-xs md:text-sm z-10 transition-colors duration-300",
-                    step >= s ? "bg-primary text-black shadow-[0_0_15px_rgba(16,185,129,0.5)]" : "bg-[#111] text-gray-500 border border-white/10"
+                    step >= s ? "bg-primary text-black shadow-[0_0_15px_rgba(16,185,129,0.5)]" : "bg-[#0a0a0a] md:bg-[#111] text-gray-500 border border-white/10"
                   )}
                 >
                   {step > s ? <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> : s}
@@ -830,8 +830,6 @@ export default function BookingSystem() {
                         <span>Download PDF Pass</span>
                       </>
                     )}
-                  </button>
-
                   </button>
 
                   <button

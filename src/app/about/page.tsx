@@ -3,17 +3,34 @@ import { MapPin, Phone, Mail, Star, ExternalLink, Share2, MessageSquare } from "
 export default function AboutPage() {
   return (
     <div className="pt-24 pb-16 md:pt-32 md:pb-24 min-h-screen bg-[#0a0a0a]">
-      <div className="container mx-auto px-6 md:px-12">
-        {/* About Section */}
-        <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-16 mb-16 md:mb-24">
-          <div className="lg:w-1/2">
-            <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4 md:mb-6">
+      <div className="container mx-auto px-0 md:px-12">
+        {/* Mobile specific layout (header image) */}
+        <div className="md:hidden relative w-full h-[45vh] mb-8">
+          <div className="absolute inset-0 bg-black z-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.jpg" alt="ACM Indoor Logo" className="w-full h-full object-cover opacity-60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-transparent" />
+          </div>
+          <div className="absolute bottom-0 left-0 w-full p-6 z-10 flex flex-col justify-end">
+            <h2 className="text-4xl font-outfit font-black text-white uppercase tracking-tighter mb-2">
               About <span className="text-primary">Us</span>
             </h2>
-            <p className="text-gray-400 text-sm md:text-lg mb-4 md:mb-6 leading-relaxed">
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Sri Lanka's premier indoor futsal facility, established in 2026.
+            </p>
+          </div>
+        </div>
+
+        {/* Desktop About Section */}
+        <div className="hidden md:flex flex-col lg:flex-row items-center gap-16 mb-24 mt-32">
+          <div className="lg:w-1/2">
+            <h2 className="text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-6">
+              About <span className="text-primary">Us</span>
+            </h2>
+            <p className="text-gray-400 text-lg mb-6 leading-relaxed">
               Established in 2026, ACM Indoor Turf is Sri Lanka's premier indoor futsal facility. We are dedicated to providing a world-class sporting experience for players of all levels. From our FIFA-approved turf to our luxury amenities, every detail has been meticulously crafted to elevate your game.
             </p>
-            <p className="text-gray-400 text-sm md:text-lg leading-relaxed">
+            <p className="text-gray-400 text-lg leading-relaxed">
               Whether you're looking for a casual game with friends, corporate tournaments, or professional training sessions, our facility is equipped to handle it all in a fully climate-controlled and beautifully designed environment.
             </p>
           </div>
@@ -28,68 +45,114 @@ export default function AboutPage() {
           </div>
         </div>
 
+        {/* Mobile text continuation */}
+        <div className="md:hidden px-6 mb-16 text-gray-400 text-sm leading-relaxed space-y-4">
+          <p>
+            We are dedicated to providing a world-class sporting experience for players of all levels. From our FIFA-approved turf to our luxury amenities, every detail has been meticulously crafted to elevate your game.
+          </p>
+          <p>
+            Whether you're looking for a casual game with friends, corporate tournaments, or professional training sessions, our facility is equipped to handle it all in a fully climate-controlled and beautifully designed environment.
+          </p>
+        </div>
+
         {/* Contact Us Section */}
-        <div className="flex flex-col lg:flex-row-reverse items-center gap-10 md:gap-16 pt-16 md:pt-24 border-t border-white/5">
-          <div className="lg:w-1/2">
-            <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-6 md:mb-10">
-              Get in <span className="text-primary">Touch</span>
-            </h2>
+        <div className="flex flex-col lg:flex-row-reverse items-center gap-10 md:gap-16 pt-0 md:pt-24 border-t-0 md:border-t border-white/5 px-0 md:px-0">
+          <div className="w-full lg:w-1/2">
+            <div className="px-6 md:px-0 mb-6 md:mb-10">
+              <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter">
+                Get in <span className="text-primary">Touch</span>
+              </h2>
+            </div>
             
-            <div className="space-y-6 md:space-y-8 mb-8 md:mb-10 bg-white/5 p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-              
-              <div className="flex items-start gap-4 md:gap-6 group relative z-10">
-                <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
-                  <MapPin className="w-4 h-4 md:w-6 md:h-6 text-primary group-hover:text-black transition-colors" />
+            {/* Mobile horizontal scrolling cards */}
+            <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-8 hide-scrollbar">
+              <div className="bg-white/5 p-6 rounded-2xl border border-white/10 min-w-[75vw] snap-center shrink-0 flex flex-col gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg md:text-xl mb-1">Address</h4>
-                  <p className="text-gray-400 text-sm md:text-lg">ACM INDOOR TURF, 73/5 Isnapulla Road, Dharga Town</p>
+                  <h4 className="text-white font-bold text-lg mb-1">Address</h4>
+                  <p className="text-gray-400 text-sm">ACM INDOOR TURF, 73/5 Isnapulla Road, Dharga Town</p>
                 </div>
               </div>
-
-              <div className="flex items-start gap-4 md:gap-6 group relative z-10">
-                <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
-                  <Phone className="w-4 h-4 md:w-6 md:h-6 text-primary group-hover:text-black transition-colors" />
+              <div className="bg-white/5 p-6 rounded-2xl border border-white/10 min-w-[75vw] snap-center shrink-0 flex flex-col gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg md:text-xl mb-1">Phone</h4>
-                  <p className="text-gray-400 text-sm md:text-lg">+94 77 123 4567</p>
+                  <h4 className="text-white font-bold text-lg mb-1">Phone</h4>
+                  <p className="text-gray-400 text-sm">+94 77 123 4567</p>
                 </div>
               </div>
-
-              <div className="flex items-start gap-4 md:gap-6 group relative z-10">
-                <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
-                  <Mail className="w-4 h-4 md:w-6 md:h-6 text-primary group-hover:text-black transition-colors" />
+              <div className="bg-white/5 p-6 rounded-2xl border border-white/10 min-w-[75vw] snap-center shrink-0 flex flex-col gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg md:text-xl mb-1">Email</h4>
-                  <p className="text-gray-400 text-sm md:text-lg">info@acmindoorturf.com</p>
+                  <h4 className="text-white font-bold text-lg mb-1">Email</h4>
+                  <p className="text-gray-400 text-sm">info@acmindoorturf.com</p>
                 </div>
               </div>
             </div>
 
-            <a 
-              href="https://www.google.com/maps/place/ACM+INDOOR+TURF/@6.449576,80.006855,18z/data=!4m6!3m5!1s0x3ae22f0043ce219b:0x350532f359799c8!8m2!3d6.4494747!4d80.0068577!16s%2Fg%2F11ntg1swk5?entry=ttu&g_ep=EgoyMDI2MDkyOS4wIKXMDSoASAFQAw%3D%3D" 
-              target="_blank" 
-              rel="noreferrer"
-              className="inline-flex w-full sm:w-auto justify-center items-center gap-2 bg-primary text-black px-6 py-3.5 md:px-10 md:py-4 rounded-xl md:rounded-full font-bold hover:bg-white transition-colors text-sm md:text-lg shadow-[0_10px_30px_rgba(16,185,129,0.3)] hover:shadow-[0_10px_40px_rgba(16,185,129,0.5)]"
-            >
-              Open in Google Maps
-            </a>
+            {/* Desktop contact block */}
+            <div className="hidden md:block space-y-8 mb-10 bg-white/5 p-8 rounded-3xl border border-white/10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+              
+              <div className="flex items-start gap-6 group relative z-10">
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
+                  <MapPin className="w-6 h-6 text-primary group-hover:text-black transition-colors" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-xl mb-1">Address</h4>
+                  <p className="text-gray-400 text-lg">ACM INDOOR TURF, 73/5 Isnapulla Road, Dharga Town</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6 group relative z-10">
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
+                  <Phone className="w-6 h-6 text-primary group-hover:text-black transition-colors" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-xl mb-1">Phone</h4>
+                  <p className="text-gray-400 text-lg">+94 77 123 4567</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6 group relative z-10">
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
+                  <Mail className="w-6 h-6 text-primary group-hover:text-black transition-colors" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-xl mb-1">Email</h4>
+                  <p className="text-gray-400 text-lg">info@acmindoorturf.com</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="px-6 md:px-0">
+              <a 
+                href="https://www.google.com/maps/place/ACM+INDOOR+TURF" 
+                target="_blank" 
+                rel="noreferrer"
+                className="inline-flex w-full sm:w-auto justify-center items-center gap-2 bg-primary text-black px-6 py-4 md:px-10 md:py-4 rounded-xl md:rounded-full font-bold hover:bg-white transition-colors text-sm md:text-lg shadow-[0_10px_30px_rgba(16,185,129,0.3)] hover:shadow-[0_10px_40px_rgba(16,185,129,0.5)]"
+              >
+                Open in Google Maps
+              </a>
+            </div>
           </div>
           
-          <div className="lg:w-1/2 w-full h-[250px] md:h-[400px] lg:h-[600px] rounded-2xl md:rounded-3xl overflow-hidden glass p-2 relative group">
-            <div className="absolute inset-0 bg-primary/10 pointer-events-none group-hover:bg-transparent transition-colors duration-500 z-10" />
+          <div className="lg:w-1/2 w-full h-[300px] md:h-[500px] lg:h-[600px] md:rounded-3xl overflow-hidden md:glass md:p-2 relative group mt-8 md:mt-0">
+            <div className="hidden md:block absolute inset-0 bg-primary/10 pointer-events-none group-hover:bg-transparent transition-colors duration-500 z-10" />
             <iframe
               src="https://maps.google.com/maps?q=ACM%20INDOOR%20TURF,%20Dharga%20Town&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
-              style={{ border: 0, borderRadius: "1.5rem" }}
+              style={{ border: 0, borderRadius: "0" }}
+              className="md:!rounded-3xl grayscale opacity-80 md:group-hover:grayscale-0 md:group-hover:opacity-100 transition-all duration-700 relative z-0"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 relative z-0"
             ></iframe>
           </div>
         </div>
@@ -152,18 +215,18 @@ export default function AboutPage() {
                 Because Google requires user authentication for authentic ratings, your review is posted directly through your Google Account to the official ACM Indoor Turf profile.
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 mb-6 md:mb-8 hide-scrollbar -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-3">
                 {[
                   { step: "1", title: "Click Button", desc: "Click 'Write a Review' to open our official listing." },
                   { step: "2", title: "Rate Stars", desc: "Select your star rating and write your turf experience." },
                   { step: "3", title: "Live on Google", desc: "Your review publishes immediately to Google Search & Maps." }
                 ].map((s) => (
-                  <div key={s.step} className="bg-white/5 border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6">
-                    <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold mb-3 md:mb-4 text-xs md:text-sm">
+                  <div key={s.step} className="bg-white/5 border border-white/10 rounded-xl md:rounded-2xl p-6 min-w-[75vw] md:min-w-0 snap-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold mb-4 text-sm">
                       {s.step}
                     </div>
-                    <h4 className="text-white font-bold mb-1 md:mb-2 text-sm md:text-base">{s.title}</h4>
-                    <p className="text-xs md:text-sm text-gray-400">{s.desc}</p>
+                    <h4 className="text-white font-bold mb-2 text-base">{s.title}</h4>
+                    <p className="text-sm text-gray-400">{s.desc}</p>
                   </div>
                 ))}
               </div>
