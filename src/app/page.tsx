@@ -114,7 +114,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.85] mb-6 drop-shadow-2xl"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.85] mb-4 md:mb-6 drop-shadow-2xl"
           >
             Play Like <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#059669]">Champions</span>
@@ -124,7 +124,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light"
+            className="text-sm sm:text-base md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 md:mb-10 font-light"
           >
             Welcome to ACM Indoor Turf. Sri Lanka's most luxurious, professional-grade indoor futsal arena designed for the ultimate sporting experience.
           </motion.p>
@@ -161,11 +161,11 @@ export default function Home() {
       {/* Features Section */}
       <section id="facilities" className="py-32 bg-[#050505] relative z-10">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
               World Class <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#FFF3B0]">Facilities</span>
             </h2>
-            <p className="text-gray-400 text-base md:text-lg">Every detail crafted for an elite football experience.</p>
+            <p className="text-gray-400 text-sm md:text-lg">Every detail crafted for an elite football experience.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -192,13 +192,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
-                className="glass-card p-6 sm:p-8 md:p-10 rounded-3xl group hover:-translate-y-2 transition-transform duration-500"
+                className="glass-card p-5 sm:p-6 md:p-10 rounded-2xl md:rounded-3xl group hover:-translate-y-2 transition-transform duration-500"
               >
-                <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                  {feature.icon}
+                <div className="w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500">
+                  <div className="scale-75 md:scale-100">{feature.icon}</div>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 font-outfit">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{feature.desc}</p>
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4 font-outfit">{feature.title}</h3>
+                <p className="text-gray-400 text-xs md:text-base leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -206,14 +206,14 @@ export default function Home() {
       </section>
 
       {/* Gallery Teaser Section */}
-      <section className="py-24 bg-black relative z-10 border-t border-white/5">
+      <section className="py-16 md:py-24 bg-black relative z-10 border-t border-white/5">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-4 md:gap-6">
             <div>
-              <h2 className="text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+              <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
                 The <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#FFF3B0]">Experience</span>
               </h2>
-              <p className="text-gray-400 text-lg max-w-xl">
+              <p className="text-gray-400 text-sm md:text-lg max-w-xl">
                 Take a look at the elite atmosphere and high-intensity action at ACM Indoor Turf.
               </p>
             </div>
@@ -282,29 +282,29 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-24 bg-black relative z-10 border-t border-white/5">
+      <section className="py-16 md:py-24 bg-black relative z-10 border-t border-white/5">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
               Simple <span className="text-primary">Pricing</span>
             </h2>
-            <p className="text-gray-400 text-lg">Transparent rates for world-class facilities. No hidden fees.</p>
+            <p className="text-gray-400 text-sm md:text-lg">Transparent rates for world-class facilities. No hidden fees.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
             {/* Pro Futsal Pitch */}
-            <div className="glass-card rounded-[2rem] p-8 md:p-12 relative overflow-hidden group">
+            <div className="glass-card rounded-[2rem] p-6 md:p-12 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors duration-500" />
               
-              <h3 className="text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Pro Futsal Pitch</h3>
-              <p className="text-gray-400 mb-6 relative z-10">Perfect for 5-a-side matches, training, and tournaments.</p>
+              <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Pro Futsal Pitch</h3>
+              <p className="text-gray-400 text-sm md:text-base mb-6 relative z-10">Perfect for 5-a-side matches, training, and tournaments.</p>
               
-              <div className="flex items-baseline gap-2 mb-8 relative z-10">
-                <span className="text-5xl font-black text-white">Rs. 4,500</span>
+              <div className="flex items-baseline gap-2 mb-6 md:mb-8 relative z-10">
+                <span className="text-4xl md:text-5xl font-black text-white">Rs. 4,500</span>
                 <span className="text-gray-400 font-bold">/ hr</span>
               </div>
               
-              <ul className="space-y-4 mb-10 relative z-10">
+              <ul className="space-y-3 md:space-y-4 mb-8 md:mb-10 relative z-10">
                 {[
                   "Professional shock-pad underlay",
                   "High-intensity LED floodlights",
@@ -312,32 +312,32 @@ export default function Home() {
                   "Free bibs and premium match ball"
                 ].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-4 h-4 text-primary" />
+                    <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 md:w-4 md:h-4 text-primary" />
                     </div>
-                    <span className="text-gray-300">{feature}</span>
+                    <span className="text-gray-300 text-sm md:text-base">{feature}</span>
                   </li>
                 ))}
               </ul>
               
-              <Link href="/booking" className="block w-full py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-center hover:bg-primary hover:text-black transition-colors relative z-10 shadow-[0_10px_30px_rgba(16,185,129,0.1)] group-hover:shadow-[0_10px_40px_rgba(16,185,129,0.3)]">
+              <Link href="/booking" className="block w-full py-3.5 md:py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-sm md:text-base text-center hover:bg-primary hover:text-black transition-colors relative z-10 shadow-[0_10px_30px_rgba(16,185,129,0.1)] group-hover:shadow-[0_10px_40px_rgba(16,185,129,0.3)]">
                 Book Futsal Pitch
               </Link>
             </div>
 
             {/* Bowling Machine Pitch */}
-            <div className="glass-card rounded-[2rem] p-8 md:p-12 relative overflow-hidden group">
+            <div className="glass-card rounded-[2rem] p-6 md:p-12 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#4285F4]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-[#4285F4]/20 transition-colors duration-500" />
               
-              <h3 className="text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Bowling Machine Pitch</h3>
-              <p className="text-gray-400 mb-6 relative z-10">Advanced indoor cricket practice with automated delivery.</p>
+              <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Bowling Machine Pitch</h3>
+              <p className="text-gray-400 text-sm md:text-base mb-6 relative z-10">Advanced indoor cricket practice with automated delivery.</p>
               
-              <div className="flex items-baseline gap-2 mb-8 relative z-10">
-                <span className="text-5xl font-black text-white">Rs. 3,500</span>
+              <div className="flex items-baseline gap-2 mb-6 md:mb-8 relative z-10">
+                <span className="text-4xl md:text-5xl font-black text-white">Rs. 3,500</span>
                 <span className="text-gray-400 font-bold">/ hr</span>
               </div>
               
-              <ul className="space-y-4 mb-10 relative z-10">
+              <ul className="space-y-3 md:space-y-4 mb-8 md:mb-10 relative z-10">
                 {[
                   "Fully automated bowling machine",
                   "Adjustable speed and spin settings",
@@ -346,15 +346,15 @@ export default function Home() {
                   "Ideal for individual or duo practice"
                 ].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#4285F4]/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-4 h-4 text-[#4285F4]" />
+                    <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#4285F4]/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 md:w-4 h-4 text-[#4285F4]" />
                     </div>
-                    <span className="text-gray-300">{feature}</span>
+                    <span className="text-gray-300 text-sm md:text-base">{feature}</span>
                   </li>
                 ))}
               </ul>
               
-              <Link href="/booking" className="block w-full py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-center hover:bg-[#4285F4] hover:text-white transition-colors relative z-10 shadow-[0_10px_30px_rgba(66,133,244,0.1)] group-hover:shadow-[0_10px_40px_rgba(66,133,244,0.3)]">
+              <Link href="/booking" className="block w-full py-3.5 md:py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-sm md:text-base text-center hover:bg-[#4285F4] hover:text-white transition-colors relative z-10 shadow-[0_10px_30px_rgba(66,133,244,0.1)] group-hover:shadow-[0_10px_40px_rgba(66,133,244,0.3)]">
                 Book Cricket Pitch
               </Link>
             </div>
@@ -363,13 +363,13 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-[#050505] relative z-10 border-t border-white/5">
+      <section className="py-16 md:py-24 bg-[#050505] relative z-10 border-t border-white/5">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
               Player <span className="text-primary">Reviews</span>
             </h2>
-            <p className="text-gray-400 text-lg">Hear what the champions say about our facilities.</p>
+            <p className="text-gray-400 text-sm md:text-lg">Hear what the champions say about our facilities.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -380,15 +380,15 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="bg-white/5 border border-white/10 p-8 rounded-3xl relative"
+                className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl relative"
               >
                 <div className="flex text-primary mb-4">
-                  {[...Array(review.rating || 5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-primary" />)}
+                  {[...Array(review.rating || 5)].map((_, j) => <Star key={j} className="w-3 h-3 md:w-4 md:h-4 fill-primary" />)}
                 </div>
-                <p className="text-gray-300 italic mb-6">"{review.text}"</p>
+                <p className="text-gray-300 text-sm md:text-base italic mb-6">"{review.text}"</p>
                 <div>
-                  <h4 className="text-white font-bold">{review.author_name}</h4>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest">Google Review</p>
+                  <h4 className="text-white font-bold text-sm md:text-base">{review.author_name}</h4>
+                  <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest">Google Review</p>
                 </div>
               </motion.div>
             ))}
@@ -396,9 +396,9 @@ export default function Home() {
         </div>
       </section>
       {/* Unique Feature: Live Match Status & Hall of Fame */}
-      <section className="py-24 bg-[#0a0a0a] relative z-10 border-t border-white/5">
+      <section className="py-16 md:py-24 bg-[#0a0a0a] relative z-10 border-t border-white/5">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
             
             {/* Live Status Widget */}
             <motion.div
@@ -408,47 +408,47 @@ export default function Home() {
               className="relative p-1 rounded-3xl bg-gradient-to-br from-primary/30 to-black overflow-hidden"
             >
               <div className="absolute inset-0 bg-primary/10 animate-pulse" />
-              <div className="bg-[#050505] rounded-[22px] p-8 md:p-10 relative z-10">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="relative flex h-4 w-4">
+              <div className="bg-[#050505] rounded-[22px] p-6 md:p-10 relative z-10">
+                <div className="flex items-center gap-3 mb-6 md:mb-8">
+                  <div className="relative flex h-3 w-3 md:h-4 md:w-4">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 md:h-4 md:w-4 bg-red-500"></span>
                   </div>
-                  <h3 className="text-xl font-bold text-white uppercase tracking-widest">Live Action</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-white uppercase tracking-widest">Live Action</h3>
                 </div>
                 
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   {/* Football Live Score */}
-                  <div className="flex justify-between items-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-blue-900/50 flex items-center justify-center border border-blue-500">
-                        <Users className="text-blue-400 w-5 h-5" />
+                  <div className="flex justify-between items-center p-3 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                    <div className="flex items-center gap-3 md:gap-4">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-900/50 flex items-center justify-center border border-blue-500">
+                        <Users className="text-blue-400 w-4 h-4 md:w-5 md:h-5" />
                       </div>
                       <div>
-                        <p className="text-white font-bold">Real Madrid vs Barcelona</p>
-                        <p className="text-xs text-gray-400">El Clásico - La Liga</p>
+                        <p className="text-white text-sm md:text-base font-bold">Real Madrid vs Barcelona</p>
+                        <p className="text-[10px] md:text-xs text-gray-400">El Clásico - La Liga</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="text-primary font-bold text-2xl">{footballScore.home} - {footballScore.away}</span>
-                      <p className="text-xs text-red-400 animate-pulse">{footballScore.min}' MIN</p>
+                      <span className="text-primary font-bold text-xl md:text-2xl">{footballScore.home} - {footballScore.away}</span>
+                      <p className="text-[10px] md:text-xs text-red-400 animate-pulse">{footballScore.min}' MIN</p>
                     </div>
                   </div>
 
                   {/* Cricket Live Score */}
-                  <div className="flex justify-between items-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-green-900/50 flex items-center justify-center border border-green-500">
-                        <Activity className="text-green-400 w-5 h-5" />
+                  <div className="flex justify-between items-center p-3 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                    <div className="flex items-center gap-3 md:gap-4">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-900/50 flex items-center justify-center border border-green-500">
+                        <Activity className="text-green-400 w-4 h-4 md:w-5 md:h-5" />
                       </div>
                       <div>
-                        <p className="text-white font-bold">India vs Australia</p>
-                        <p className="text-xs text-gray-400">ICC World Cup - Final</p>
+                        <p className="text-white text-sm md:text-base font-bold">India vs Australia</p>
+                        <p className="text-[10px] md:text-xs text-gray-400">ICC World Cup - Final</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="text-white font-bold text-xl">{cricketScore.runs}/{cricketScore.wickets}</span>
-                      <p className="text-xs text-primary">Overs: {cricketScore.overs}</p>
+                      <span className="text-white font-bold text-lg md:text-xl">{cricketScore.runs}/{cricketScore.wickets}</span>
+                      <p className="text-[10px] md:text-xs text-primary">Overs: {cricketScore.overs}</p>
                     </div>
                   </div>
                 </div>
@@ -463,28 +463,28 @@ export default function Home() {
               className="space-y-8"
             >
               <div>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent font-bold text-sm mb-4">
-                  <Star className="w-4 h-4 fill-accent" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent font-bold text-xs md:text-sm mb-4">
+                  <Star className="w-3 h-3 md:w-4 md:h-4 fill-accent" />
                   <span>Sports Lounge</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
+                <h2 className="text-3xl md:text-5xl font-outfit font-black text-white uppercase tracking-tighter mb-4">
                   Catch the <span className="text-primary">Action Live</span>
                 </h2>
-                <p className="text-gray-400 text-lg">
+                <p className="text-gray-400 text-sm md:text-lg">
                   Don't miss a second of the game. Our premium sports lounge features massive 4K screens broadcasting all major international football and cricket tournaments. Relax with your squad after a tough match.
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center relative overflow-hidden group">
+              <div className="grid grid-cols-2 gap-3 md:gap-4">
+                <div className="p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 text-center relative overflow-hidden group">
                   <div className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                  <h4 className="text-3xl font-black text-white mb-1 relative z-10">3</h4>
-                  <p className="text-sm text-gray-400 uppercase tracking-widest relative z-10">Massive 4K Screens</p>
+                  <h4 className="text-2xl md:text-3xl font-black text-white mb-1 relative z-10">3</h4>
+                  <p className="text-[10px] md:text-sm text-gray-400 uppercase tracking-widest relative z-10">Massive 4K Screens</p>
                 </div>
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center relative overflow-hidden group">
+                <div className="p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 text-center relative overflow-hidden group">
                   <div className="absolute inset-0 bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                  <h4 className="text-3xl font-black text-white mb-1 relative z-10">24/7</h4>
-                  <p className="text-sm text-gray-400 uppercase tracking-widest relative z-10">Global Broadcasts</p>
+                  <h4 className="text-2xl md:text-3xl font-black text-white mb-1 relative z-10">24/7</h4>
+                  <p className="text-[10px] md:text-sm text-gray-400 uppercase tracking-widest relative z-10">Global Broadcasts</p>
                 </div>
               </div>
             </motion.div>

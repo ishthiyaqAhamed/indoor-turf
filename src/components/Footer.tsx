@@ -15,14 +15,14 @@ const Twitter = ({ className }: { className?: string }) => (
 
 export default function Footer() {
   return (
-    <footer className="bg-[#020202] border-t border-white/5 pt-20 pb-10">
+    <footer className="bg-[#020202] border-t border-white/5 pt-12 pb-8 md:pt-20 md:pb-10">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-10 md:mb-16">
           
           {/* Brand */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex flex-col items-start group inline-block">
-              <span className="text-3xl font-outfit font-black tracking-tighter text-white uppercase flex items-center gap-2">
+              <span className="text-2xl md:text-3xl font-outfit font-black tracking-tighter text-white uppercase flex items-center gap-2">
                 ACM <span className="text-primary font-light">Turf</span>
               </span>
               <span className="text-xs tracking-widest text-accent uppercase font-semibold opacity-80">
@@ -32,15 +32,15 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Sri Lanka's premier indoor futsal facility, offering professional-grade pitches, luxury amenities, and an unparalleled sporting experience.
             </p>
-            <div className="flex items-center gap-4 mt-2">
-              <a href="https://www.facebook.com/p/ACM-Indoor-Turf-61592929581909/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black transition-all">
-                <Facebook className="w-4 h-4" />
+            <div className="flex items-center gap-3 md:gap-4 mt-2">
+              <a href="https://www.facebook.com/p/ACM-Indoor-Turf-61592929581909/" target="_blank" rel="noreferrer" className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black transition-all">
+                <Facebook className="w-3.5 h-3.5 md:w-4 md:h-4" />
               </a>
-              <a href="https://www.instagram.com/acm_indoor_turf/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black transition-all">
-                <Instagram className="w-4 h-4" />
+              <a href="https://www.instagram.com/acm_indoor_turf/" target="_blank" rel="noreferrer" className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black transition-all">
+                <Instagram className="w-3.5 h-3.5 md:w-4 md:h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black transition-all">
-                <Twitter className="w-4 h-4" />
+              <a href="#" className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black transition-all">
+                <Twitter className="w-3.5 h-3.5 md:w-4 md:h-4" />
               </a>
             </div>
           </div>

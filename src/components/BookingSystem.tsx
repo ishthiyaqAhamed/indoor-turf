@@ -364,9 +364,9 @@ export default function BookingSystem() {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="glass-card rounded-3xl p-4 sm:p-6 md:p-12">
+          <div className="glass-card rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-12">
             {/* Steps Indicator */}
-            <div className="flex items-center justify-between mb-12 relative no-print">
+            <div className="flex items-center justify-between mb-8 md:mb-12 relative no-print">
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-white/10 rounded-full z-0" />
               <div 
                 className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-primary rounded-full z-0 transition-all duration-500"
@@ -394,8 +394,8 @@ export default function BookingSystem() {
                 exit={{ opacity: 0, x: -20 }}
                 className="space-y-6"
               >
-                <h3 className="text-2xl font-bold text-white mb-6 font-outfit">Select Pitch</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 font-outfit">Select Pitch</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {pitches.map((pitch) => (
                     <button
                       key={pitch.id}
@@ -407,7 +407,7 @@ export default function BookingSystem() {
                           : "border-white/10 bg-white/5 hover:border-white/30 hover:scale-[1.01]"
                       )}
                     >
-                      <div className="w-full h-48 md:h-64 relative overflow-hidden">
+                      <div className="w-full h-32 md:h-64 relative overflow-hidden">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
                           src={pitch.image} 
@@ -420,12 +420,12 @@ export default function BookingSystem() {
                           <p className="text-accent font-bold font-mono text-sm">{pitch.price}</p>
                         </div>
                       </div>
-                      <div className="p-4 md:p-5 flex-grow flex flex-col">
-                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary mb-3">
-                          <Users className="w-4 h-4" />
+                      <div className="p-3 md:p-5 flex-grow flex flex-col">
+                        <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-wider text-primary mb-2 md:mb-3">
+                          <Users className="w-3.5 h-3.5 md:w-4 md:h-4" />
                           <span>{pitch.size}</span>
                         </div>
-                        <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
+                        <p className="text-gray-400 text-[11px] md:text-sm leading-snug md:leading-relaxed">
                           {pitch.description}
                         </p>
                       </div>
@@ -444,12 +444,12 @@ export default function BookingSystem() {
                 className="space-y-8"
               >
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-6 font-outfit">Select Date</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 font-outfit">Select Date</h3>
                   <input 
                     type="date" 
                     value={selectedDate}
                     onChange={(e) => setSelectedDate(e.target.value)}
-                    className="w-full md:w-auto bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-primary transition-colors [color-scheme:dark]"
+                    className="w-full md:w-auto bg-white/5 border border-white/10 rounded-lg md:rounded-xl px-4 py-3 md:px-6 md:py-4 text-sm md:text-base text-white focus:outline-none focus:border-primary transition-colors [color-scheme:dark]"
                   />
                 </div>
                 
@@ -459,15 +459,15 @@ export default function BookingSystem() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <h3 className="text-2xl font-bold text-white mb-6 font-outfit">Select Time</h3>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-6">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 font-outfit">Select Time</h3>
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 md:gap-3 mb-6">
                       {timeSlots.map((slot) => (
                         <button
                           key={slot.time}
                           onClick={() => setSelectedTime(slot.time)}
                           disabled={!slot.available}
                           className={clsx(
-                            "py-3 px-4 rounded-xl border text-sm font-semibold transition-all duration-300",
+                            "py-2 px-2 md:py-3 md:px-4 rounded-lg md:rounded-xl border text-[11px] md:text-sm font-semibold transition-all duration-300 text-center",
                             !slot.available 
                               ? "border-red-500/30 bg-red-500/10 text-red-500/50 cursor-not-allowed" 
                               : selectedTime === slot.time
@@ -507,8 +507,8 @@ export default function BookingSystem() {
                 exit={{ opacity: 0, x: -20 }}
                 className="space-y-6"
               >
-                <h3 className="text-2xl font-bold text-white mb-2 font-outfit">Your Contact Details</h3>
-                <p className="text-gray-400 text-sm mb-6">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-2 font-outfit">Your Contact Details</h3>
+                <p className="text-gray-400 text-xs md:text-sm mb-4 md:mb-6">
                   Please enter your contact details. An OTP code will be sent to your mobile number to verify your booking.
                 </p>
 
@@ -520,7 +520,7 @@ export default function BookingSystem() {
                       value={fullName}
                       onChange={(e) => { setFullName(e.target.value); setOtpError(""); }}
                       disabled={otpVerified}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600 disabled:opacity-50" 
+                      className="w-full bg-white/5 border border-white/10 rounded-lg md:rounded-xl px-3 py-2.5 md:px-4 md:py-3 text-sm md:text-base text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600 disabled:opacity-50" 
                       placeholder="John Doe" 
                     />
                   </div>
@@ -538,10 +538,10 @@ export default function BookingSystem() {
                             if(otpSent) { setOtpSent(false); setOtpDigits(["", "", "", ""]); }
                           }}
                           disabled={otpSent || otpVerified}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600 disabled:opacity-50" 
+                          className="w-full bg-white/5 border border-white/10 rounded-lg md:rounded-xl pl-9 md:pl-11 pr-3 py-2.5 md:pr-4 md:py-3 text-sm md:text-base text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600 disabled:opacity-50" 
                           placeholder="+94 7X XXX XXXX" 
                         />
-                        <Smartphone className="w-5 h-5 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        <Smartphone className="w-4 h-4 md:w-5 md:h-5 text-gray-400 absolute left-3 md:left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
                       
                       {!otpVerified && (
@@ -549,15 +549,15 @@ export default function BookingSystem() {
                           type="button"
                           onClick={handleSendOtp}
                           disabled={isSendingOtp || !phoneNumber.trim()}
-                          className="px-6 py-3 bg-primary text-black font-bold rounded-xl hover:bg-primary/90 transition-transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.2)]"
+                          className="px-4 py-2.5 md:px-6 md:py-3 bg-primary text-black text-sm md:text-base font-bold rounded-lg md:rounded-xl hover:bg-primary/90 transition-transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.2)]"
                         >
-                          {isSendingOtp ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : (otpSent ? "Resend OTP" : "Verify OTP")}
+                          {isSendingOtp ? <Loader2 className="w-4 h-4 md:w-5 md:h-5 animate-spin mx-auto" /> : (otpSent ? "Resend OTP" : "Verify OTP")}
                         </button>
                       )}
                       
                       {otpVerified && (
-                        <div className="px-6 py-3 bg-primary/10 text-primary border border-primary/30 font-bold rounded-xl flex items-center justify-center gap-2 select-none">
-                          <CheckCircle2 className="w-5 h-5" /> Verified
+                        <div className="px-4 py-2.5 md:px-6 md:py-3 bg-primary/10 text-primary border border-primary/30 text-sm md:text-base font-bold rounded-lg md:rounded-xl flex items-center justify-center gap-2 select-none">
+                          <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> Verified
                         </div>
                       )}
                     </div>
@@ -602,7 +602,7 @@ export default function BookingSystem() {
                                 onChange={(e) => handleOtpChange(idx, e.target.value)}
                                 onKeyDown={(e) => handleOtpKeyDown(idx, e)}
                                 className={clsx(
-                                  "w-12 h-14 text-center text-xl font-mono font-bold rounded-lg border bg-black/60 text-white focus:outline-none transition-all duration-300 shadow-inner",
+                                  "w-10 h-12 md:w-12 md:h-14 text-center text-lg md:text-xl font-mono font-bold rounded-lg border bg-black/60 text-white focus:outline-none transition-all duration-300 shadow-inner",
                                   digit 
                                     ? "border-primary bg-primary/10 shadow-[0_0_10px_rgba(16,185,129,0.2)]" 
                                     : "border-white/20 focus:border-primary focus:bg-white/5"
@@ -648,7 +648,7 @@ export default function BookingSystem() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       disabled={otpVerified}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600 disabled:opacity-50" 
+                      className="w-full bg-white/5 border border-white/10 rounded-lg md:rounded-xl px-3 py-2.5 md:px-4 md:py-3 text-sm md:text-base text-white focus:outline-none focus:border-primary transition-colors placeholder:text-gray-600 disabled:opacity-50" 
                       placeholder="john@example.com" 
                     />
                   </div>
@@ -719,7 +719,7 @@ export default function BookingSystem() {
                 {/* Printable & Downloadable Official Entry Pass Card */}
                 <div 
                   id="booking-pass-card"
-                  className="bg-gradient-to-b from-[#141414] to-[#090909] border border-primary/40 rounded-3xl p-6 md:p-8 max-w-lg mx-auto shadow-[0_0_30px_rgba(16,185,129,0.15)] relative overflow-hidden"
+                  className="bg-gradient-to-b from-[#141414] to-[#090909] border border-primary/40 rounded-2xl md:rounded-3xl p-4 md:p-8 max-w-lg mx-auto shadow-[0_0_30px_rgba(16,185,129,0.15)] relative overflow-hidden"
                 >
                   {/* Decorative corner accent */}
                   <div className="absolute top-0 left-0 w-2 h-full bg-primary" />
@@ -817,26 +817,28 @@ export default function BookingSystem() {
                   <button
                     onClick={handleDownloadPdf}
                     disabled={isGeneratingPdf}
-                    className="w-full sm:w-auto flex-1 px-6 py-3.5 bg-primary text-black font-bold rounded-xl hover:bg-primary/90 hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2 text-sm disabled:opacity-50"
+                    className="w-full sm:w-auto flex-1 px-4 py-3 md:px-6 md:py-3.5 bg-primary text-black font-bold rounded-lg md:rounded-xl hover:bg-primary/90 hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2 text-xs md:text-sm disabled:opacity-50"
                   >
                     {isGeneratingPdf ? (
                       <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
+                        <Loader2 className="w-4 h-4 md:w-5 md:h-5 animate-spin" />
                         <span>Generating PDF...</span>
                       </>
                     ) : (
                       <>
-                        <Download className="w-5 h-5" />
+                        <Download className="w-4 h-4 md:w-5 md:h-5" />
                         <span>Download PDF Pass</span>
                       </>
                     )}
                   </button>
 
+                  </button>
+
                   <button
                     onClick={handlePrintPass}
-                    className="w-full sm:w-auto px-6 py-3.5 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-all border border-white/10 flex items-center justify-center gap-2 text-sm"
+                    className="w-full sm:w-auto flex-1 px-4 py-3 md:px-6 md:py-3.5 bg-white/10 text-white font-semibold rounded-lg md:rounded-xl hover:bg-white/20 transition-all border border-white/10 flex items-center justify-center gap-2 text-xs md:text-sm"
                   >
-                    <Printer className="w-5 h-5" />
+                    <Printer className="w-4 h-4 md:w-5 md:h-5" />
                     <span>Print Pass</span>
                   </button>
 
@@ -844,9 +846,9 @@ export default function BookingSystem() {
                     href="https://www.google.com/maps/place/ACM+INDOOR+TURF/@6.449576,80.006855,18z/data=!4m6!3m5!1s0x3ae22f0043ce219b:0x350532f359799c8!8m2!3d6.4494747!4d80.0068577!16s%2Fg%2F11ntg1swk5?entry=ttu"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto px-6 py-3.5 bg-white/5 text-gray-300 hover:text-white font-semibold rounded-xl hover:bg-white/10 transition-all border border-white/10 flex items-center justify-center gap-2 text-sm"
+                    className="w-full sm:w-auto flex-1 px-4 py-3 md:px-6 md:py-3.5 bg-white/5 text-gray-300 hover:text-white font-semibold rounded-lg md:rounded-xl hover:bg-white/10 transition-all border border-white/10 flex items-center justify-center gap-2 text-xs md:text-sm"
                   >
-                    <MapPin className="w-5 h-5 text-primary" />
+                    <MapPin className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                     <span>Get Directions</span>
                     <ExternalLink className="w-3.5 h-3.5 text-gray-400" />
                   </a>
