@@ -58,6 +58,12 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #333333;
   border-radius: 4px;
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #10B981;

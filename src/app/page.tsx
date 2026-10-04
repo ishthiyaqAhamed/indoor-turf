@@ -98,98 +98,66 @@ export default function Home() {
 
         <motion.div 
           style={{ opacity, y }}
-          className="container mx-auto px-6 relative z-20 h-full w-full flex flex-col justify-end pb-12 md:pb-0 md:justify-center md:items-center text-left md:text-center mt-0 md:mt-20"
+          className="container mx-auto px-6 relative z-20 h-full w-full flex flex-col justify-end pb-20 md:pb-0 md:justify-center md:items-center text-left md:text-center mt-0 md:mt-20"
         >
-          {/* Mobile specific layout (bottom anchored) */}
-          <div className="md:hidden w-full bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-2xl relative overflow-hidden mb-6">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent pointer-events-none" />
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 mb-4 border border-white/5">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-[10px] font-bold tracking-widest uppercase text-gray-200">Open 24/7</span>
-            </div>
-            <h1 className="text-4xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.9] mb-3">
-              Play Like <br />
-              <span className="text-primary">Champions</span>
-            </h1>
-            <p className="text-xs text-gray-300 font-light mb-6">
-              Sri Lanka's most luxurious, professional-grade indoor futsal arena.
-            </p>
-            <div className="flex gap-3">
-              <Link
-                href="/booking"
-                className="flex-1 flex justify-center items-center gap-2 rounded-xl bg-white px-4 py-3.5 font-bold text-black hover:bg-gray-200 transition-colors"
-              >
-                Book Pitch
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a
-                href="https://www.google.com/maps/place/ACM+INDOOR+TURF"
-                target="_blank"
-                rel="noreferrer"
-                className="w-14 flex justify-center items-center rounded-xl bg-white/10 border border-white/20 text-white backdrop-blur-md hover:bg-white/20 transition-colors"
-              >
-                <MapPin className="w-5 h-5 text-primary" />
-              </a>
-            </div>
-          </div>
-
-          {/* Desktop specific layout (centered) */}
-          <div className="hidden md:flex flex-col items-center">
+          {/* Unified Layout */}
+          <div className="w-full max-w-4xl mx-auto flex flex-col items-start md:items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
+              className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 md:mb-8"
             >
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium tracking-widest uppercase text-gray-300">Open 24/7 in Colombo</span>
+              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-primary animate-pulse" />
+              <span className="text-[10px] md:text-sm font-bold md:font-medium tracking-widest uppercase text-gray-200 md:text-gray-300">Open 24/7</span>
             </motion.div>
 
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl md:text-7xl lg:text-9xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.85] mb-6 drop-shadow-2xl"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-outfit font-black text-white uppercase tracking-tighter leading-[0.9] md:leading-[0.85] mb-3 md:mb-6 drop-shadow-2xl"
             >
               Play Like <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#059669]">Champions</span>
+              <span className="text-primary md:text-transparent md:bg-clip-text md:bg-gradient-to-r md:from-primary md:to-[#059669]">Champions</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light"
+              className="text-xs sm:text-sm md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 md:mb-10 font-light"
             >
-              Welcome to ACM Indoor Turf. Sri Lanka's most luxurious, professional-grade indoor futsal arena designed for the ultimate sporting experience.
+              Sri Lanka's most luxurious, professional-grade indoor futsal arena designed for the ultimate sporting experience.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex items-center gap-6"
+              className="flex items-center gap-3 md:gap-6 w-full sm:w-auto"
             >
               <Link
                 href="/booking"
-                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-10 py-4 font-bold text-black transition-all hover:scale-105 hover:bg-gray-100"
+                className="flex-1 md:flex-none flex justify-center items-center gap-2 md:gap-3 rounded-xl md:rounded-full bg-primary md:bg-white px-4 py-3.5 md:px-10 md:py-4 font-bold text-black transition-all hover:bg-white md:hover:bg-gray-100 md:hover:scale-105"
               >
-                <span>Book Your Pitch</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <span>Book Pitch</span>
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
               </Link>
               
               <a
-                href="https://www.google.com/maps/place/ACM+INDOOR+TURF/@6.449576,80.006855,18z"
+                href="https://www.google.com/maps/place/ACM+INDOOR+TURF"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-3 rounded-full bg-white/5 border border-white/20 px-10 py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
+                className="flex-1 md:flex-none flex justify-center items-center gap-2 md:gap-3 rounded-xl md:rounded-full bg-transparent md:bg-white/5 border border-white/20 px-4 py-3.5 md:px-10 md:py-4 font-bold text-white md:backdrop-blur-md transition-all hover:bg-white/10"
               >
-                <MapPin className="w-5 h-5 text-primary" />
-                <span>Get Directions</span>
+                <MapPin className="w-4 h-4 md:w-5 md:h-5" />
+                <span>Directions</span>
               </a>
             </motion.div>
           </div>
         </motion.div>
+
 
 
       </section>
@@ -204,20 +172,20 @@ export default function Home() {
             <p className="text-gray-400 text-sm md:text-lg">Every detail crafted for an elite football experience.</p>
           </div>
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-8 md:grid md:grid-cols-3 md:gap-8 md:px-0 md:pb-0 hide-scrollbar">
+          <div className="flex flex-col gap-4 px-6 md:grid md:grid-cols-3 md:gap-8 md:px-0">
             {[
               {
-                icon: <Activity className="w-10 h-10 text-accent" />,
+                icon: <Activity className="w-6 h-6 md:w-10 md:h-10 text-primary md:text-accent" />,
                 title: "Pro Cricket Nets",
                 desc: "Fully enclosed, high-tension netting equipped with an automated smart bowling machine capable of 150km/h."
               },
               {
-                icon: <Zap className="w-10 h-10 text-primary" />,
+                icon: <Zap className="w-6 h-6 md:w-10 md:h-10 text-primary" />,
                 title: "Pro Lighting",
                 desc: "Shadowless LED sports lighting system illuminating the pitch perfectly for night games and recordings."
               },
               {
-                icon: <Shield className="w-10 h-10 text-blue-400" />,
+                icon: <Shield className="w-6 h-6 md:w-10 md:h-10 text-primary md:text-blue-400" />,
                 title: "Luxury Amenities",
                 desc: "Air-conditioned dressing rooms, hot showers, spectator lounges, and a premium cafe area."
               }
@@ -228,14 +196,14 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
-                className="glass-card p-6 md:p-10 rounded-3xl group hover:-translate-y-2 transition-transform duration-500 min-w-[85vw] md:min-w-0 snap-center shrink-0 flex flex-col justify-between h-[280px] md:h-auto border border-white/5"
+                className="bg-[#0A0A0A] md:bg-white/5 md:glass-card p-6 md:p-10 rounded-2xl md:rounded-3xl group hover:-translate-y-2 transition-transform duration-500 border border-white/5 flex flex-row md:flex-col items-start gap-4 md:gap-0"
               >
-                <div className="w-14 h-14 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500 shadow-inner">
-                  <div className="scale-75 md:scale-100 text-white">{feature.icon}</div>
+                <div className="w-12 h-12 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-white/5 md:bg-gradient-to-br from-white/10 to-transparent border border-white/10 flex items-center justify-center shrink-0 md:mb-8 group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                  <div className="text-white">{feature.icon}</div>
                 </div>
                 <div>
-                  <h3 className="text-2xl md:text-2xl font-bold text-white mb-2 md:mb-4 font-outfit tracking-tight">{feature.title}</h3>
-                  <p className="text-gray-400 text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">{feature.desc}</p>
+                  <h3 className="text-lg md:text-2xl font-bold text-white mb-1 md:mb-4 font-outfit tracking-tight">{feature.title}</h3>
+                  <p className="text-gray-400 text-xs md:text-base leading-relaxed">{feature.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -263,42 +231,46 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 md:pb-0 md:grid md:grid-cols-4 md:gap-4 hide-scrollbar -mx-6 px-6 md:mx-0 md:px-0">
+          <div className="flex flex-col gap-4 px-6 md:grid md:grid-cols-4 md:gap-4 md:px-0">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="col-span-2 row-span-2 rounded-[2rem] md:rounded-3xl overflow-hidden relative group min-w-[85vw] md:min-w-0 snap-center shrink-0 h-[400px] md:h-auto aspect-square md:aspect-auto"
+              className="md:col-span-2 md:row-span-2 rounded-[2rem] md:rounded-3xl overflow-hidden relative group h-[300px] md:h-auto md:aspect-square"
             >
               <img src="/pro-pitch.png" alt="Pro Pitch" className="w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 md:p-8">
                 <h4 className="text-white font-bold text-xl md:text-2xl">Pro Futsal League</h4>
               </div>
             </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="rounded-[2rem] md:rounded-3xl overflow-hidden relative group min-w-[70vw] md:min-w-0 snap-center shrink-0 h-[400px] md:h-auto aspect-[3/4] md:aspect-square"
-            >
-              <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Action" className="w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-700" />
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="rounded-[2rem] md:rounded-3xl overflow-hidden relative group bg-gray-900 min-w-[70vw] md:min-w-0 snap-center shrink-0 h-[400px] md:h-auto aspect-[3/4] md:aspect-square"
-            >
-              <img src="/bowling-machine.png" alt="Bowling Machine" className="w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-700" />
-            </motion.div>
+            
+            <div className="flex gap-4 md:contents">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="flex-1 md:flex-none rounded-[2rem] md:rounded-3xl overflow-hidden relative group h-[150px] md:h-auto md:aspect-square"
+              >
+                <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Action" className="w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-700" />
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="flex-1 md:flex-none rounded-[2rem] md:rounded-3xl overflow-hidden relative group bg-gray-900 h-[150px] md:h-auto md:aspect-square"
+              >
+                <img src="/bowling-machine.png" alt="Bowling Machine" className="w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-700" />
+              </motion.div>
+            </div>
+            
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="col-span-2 rounded-[2rem] md:rounded-3xl overflow-hidden relative group bg-black min-w-[85vw] md:min-w-0 snap-center shrink-0 h-[400px] md:h-auto aspect-[4/3] md:aspect-[2/1]"
+              className="md:col-span-2 rounded-[2rem] md:rounded-3xl overflow-hidden relative group bg-black h-[200px] md:h-auto md:aspect-[2/1]"
             >
               <motion.img 
                 key={galleryIndex}
@@ -329,53 +301,53 @@ export default function Home() {
             <p className="text-gray-400 text-sm md:text-lg">Transparent rates for world-class facilities. No hidden fees.</p>
           </div>
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-8 md:grid md:grid-cols-2 md:gap-8 max-w-4xl mx-auto md:px-0 md:pb-0 hide-scrollbar">
+          <div className="flex flex-col gap-4 px-6 md:grid md:grid-cols-2 md:gap-8 max-w-4xl mx-auto md:px-0">
             {/* Pro Futsal Pitch */}
-            <div className="glass-card rounded-[2rem] p-8 md:p-12 relative overflow-hidden group min-w-[85vw] md:min-w-0 snap-center shrink-0 border border-white/5">
+            <div className="bg-[#0A0A0A] md:bg-white/5 md:glass-card rounded-[2rem] p-6 md:p-12 relative overflow-hidden group border border-white/5">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors duration-500" />
               
-              <h3 className="text-2xl md:text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Pro Futsal Pitch</h3>
-              <p className="text-gray-400 text-sm md:text-base mb-6 relative z-10">Perfect for 5-a-side matches, training, and tournaments.</p>
+              <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-1 md:mb-2 relative z-10">Pro Futsal Pitch</h3>
+              <p className="text-gray-400 text-xs md:text-base mb-4 md:mb-6 relative z-10">Perfect for 5-a-side matches, training, and tournaments.</p>
               
-              <div className="flex items-baseline gap-2 mb-8 md:mb-8 relative z-10">
-                <span className="text-5xl md:text-5xl font-black text-white">Rs. 4,500</span>
-                <span className="text-gray-400 font-bold">/ hr</span>
+              <div className="flex items-baseline gap-2 mb-6 md:mb-8 relative z-10">
+                <span className="text-3xl md:text-5xl font-black text-primary md:text-white">Rs. 4,500</span>
+                <span className="text-gray-400 font-bold text-sm md:text-base">/ hr</span>
               </div>
               
-              <ul className="space-y-3 md:space-y-4 mb-8 md:mb-10 relative z-10">
+              <ul className="space-y-2 md:space-y-4 mb-6 md:mb-10 relative z-10">
                 {[
                   "Professional shock-pad underlay",
                   "High-intensity LED floodlights",
                   "Washroom facilities",
                   "Free bibs and premium match ball"
                 ].map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 md:w-4 md:h-4 text-primary" />
+                  <li key={i} className="flex items-start gap-2 md:gap-3">
+                    <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-2.5 h-2.5 md:w-4 md:h-4 text-primary" />
                     </div>
-                    <span className="text-gray-300 text-sm md:text-base">{feature}</span>
+                    <span className="text-gray-300 text-xs md:text-base">{feature}</span>
                   </li>
                 ))}
               </ul>
               
-              <Link href="/booking" className="block w-full py-3.5 md:py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-sm md:text-base text-center hover:bg-primary hover:text-black transition-colors relative z-10 shadow-[0_10px_30px_rgba(16,185,129,0.1)] group-hover:shadow-[0_10px_40px_rgba(16,185,129,0.3)]">
-                Book Futsal Pitch
+              <Link href="/booking" className="block w-full py-3.5 md:py-4 rounded-xl bg-primary text-black font-bold text-sm md:text-base text-center hover:bg-white transition-colors relative z-10 shadow-[0_10px_30px_rgba(16,185,129,0.1)] group-hover:shadow-[0_10px_40px_rgba(16,185,129,0.3)]">
+                Book Pitch
               </Link>
             </div>
 
             {/* Bowling Machine Pitch */}
-            <div className="glass-card rounded-[2rem] p-8 md:p-12 relative overflow-hidden group min-w-[85vw] md:min-w-0 snap-center shrink-0 border border-white/5">
+            <div className="bg-[#0A0A0A] md:bg-white/5 md:glass-card rounded-[2rem] p-6 md:p-12 relative overflow-hidden group border border-white/5">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#4285F4]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-[#4285F4]/20 transition-colors duration-500" />
               
-              <h3 className="text-2xl md:text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-2 relative z-10">Bowling Machine Pitch</h3>
-              <p className="text-gray-400 text-sm md:text-base mb-6 relative z-10">Advanced indoor cricket practice with automated delivery.</p>
+              <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase tracking-wide mb-1 md:mb-2 relative z-10">Bowling Machine Pitch</h3>
+              <p className="text-gray-400 text-xs md:text-base mb-4 md:mb-6 relative z-10">Advanced indoor cricket practice with automated delivery.</p>
               
-              <div className="flex items-baseline gap-2 mb-8 md:mb-8 relative z-10">
-                <span className="text-5xl md:text-5xl font-black text-white">Rs. 3,500</span>
-                <span className="text-gray-400 font-bold">/ hr</span>
+              <div className="flex items-baseline gap-2 mb-6 md:mb-8 relative z-10">
+                <span className="text-3xl md:text-5xl font-black text-[#4285F4] md:text-white">Rs. 3,500</span>
+                <span className="text-gray-400 font-bold text-sm md:text-base">/ hr</span>
               </div>
               
-              <ul className="space-y-3 md:space-y-4 mb-8 md:mb-10 relative z-10">
+              <ul className="space-y-2 md:space-y-4 mb-6 md:mb-10 relative z-10">
                 {[
                   "Fully automated bowling machine",
                   "Adjustable speed and spin settings",
@@ -383,17 +355,17 @@ export default function Home() {
                   "Washroom facilities",
                   "Ideal for individual or duo practice"
                 ].map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#4285F4]/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 md:w-4 h-4 text-[#4285F4]" />
+                  <li key={i} className="flex items-start gap-2 md:gap-3">
+                    <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-[#4285F4]/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-2.5 h-2.5 md:w-4 h-4 text-[#4285F4]" />
                     </div>
-                    <span className="text-gray-300 text-sm md:text-base">{feature}</span>
+                    <span className="text-gray-300 text-xs md:text-base">{feature}</span>
                   </li>
                 ))}
               </ul>
               
-              <Link href="/booking" className="block w-full py-3.5 md:py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-sm md:text-base text-center hover:bg-[#4285F4] hover:text-white transition-colors relative z-10 shadow-[0_10px_30px_rgba(66,133,244,0.1)] group-hover:shadow-[0_10px_40px_rgba(66,133,244,0.3)]">
-                Book Cricket Pitch
+              <Link href="/booking" className="block w-full py-3.5 md:py-4 rounded-xl bg-transparent border border-[#4285F4] text-[#4285F4] font-bold text-sm md:text-base text-center hover:bg-[#4285F4] hover:text-white transition-colors relative z-10">
+                Book Pitch
               </Link>
             </div>
           </div>

@@ -64,33 +64,33 @@ export default function AboutPage() {
               </h2>
             </div>
             
-            {/* Mobile horizontal scrolling cards */}
-            <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-8 hide-scrollbar">
-              <div className="bg-white/5 p-6 rounded-2xl border border-white/10 min-w-[75vw] snap-center shrink-0 flex flex-col gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            {/* Mobile Vertical Stacked Cards */}
+            <div className="md:hidden flex flex-col gap-4 px-6 pb-8">
+              <div className="bg-[#0A0A0A] p-4 rounded-xl border border-white/5 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg mb-1">Address</h4>
-                  <p className="text-gray-400 text-sm">ACM INDOOR TURF, 73/5 Isnapulla Road, Dharga Town</p>
+                  <h4 className="text-white font-bold text-sm mb-0.5">Address</h4>
+                  <p className="text-gray-400 text-xs">ACM INDOOR TURF, 73/5 Isnapulla Road, Dharga Town</p>
                 </div>
               </div>
-              <div className="bg-white/5 p-6 rounded-2xl border border-white/10 min-w-[75vw] snap-center shrink-0 flex flex-col gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <div className="bg-[#0A0A0A] p-4 rounded-xl border border-white/5 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg mb-1">Phone</h4>
-                  <p className="text-gray-400 text-sm">+94 77 123 4567</p>
+                  <h4 className="text-white font-bold text-sm mb-0.5">Phone</h4>
+                  <p className="text-gray-400 text-xs">+94 77 123 4567</p>
                 </div>
               </div>
-              <div className="bg-white/5 p-6 rounded-2xl border border-white/10 min-w-[75vw] snap-center shrink-0 flex flex-col gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <div className="bg-[#0A0A0A] p-4 rounded-xl border border-white/5 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg mb-1">Email</h4>
-                  <p className="text-gray-400 text-sm">info@acmindoorturf.com</p>
+                  <h4 className="text-white font-bold text-sm mb-0.5">Email</h4>
+                  <p className="text-gray-400 text-xs">info@acmindoorturf.com</p>
                 </div>
               </div>
             </div>
