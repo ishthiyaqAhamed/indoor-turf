@@ -382,7 +382,7 @@ export default function Home() {
             <p className="text-gray-400 text-sm md:text-lg">Hear what the champions say about our facilities.</p>
           </div>
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-8 md:grid md:grid-cols-3 md:gap-8 md:px-0 md:pb-0 hide-scrollbar">
+          <div className="flex flex-col gap-4 px-6 md:grid md:grid-cols-3 md:gap-8 md:px-0">
             {liveReviews.map((review, i) => (
               <motion.div 
                 key={i}
@@ -390,12 +390,12 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="bg-white/5 border border-white/10 p-8 md:p-8 rounded-3xl relative min-w-[85vw] md:min-w-0 snap-center shrink-0 flex flex-col justify-between"
+                className="bg-[#0A0A0A] md:bg-white/5 border border-white/5 md:border-white/10 p-6 md:p-8 rounded-2xl md:rounded-3xl relative flex flex-col justify-between"
               >
-                <div className="flex text-primary mb-4">
+                <div className="flex text-primary mb-3 md:mb-4">
                   {[...Array(review.rating || 5)].map((_, j) => <Star key={j} className="w-3 h-3 md:w-4 md:h-4 fill-primary" />)}
                 </div>
-                <p className="text-gray-300 text-sm md:text-base italic mb-6">"{review.text}"</p>
+                <p className="text-gray-300 text-xs md:text-base italic mb-4 md:mb-6">"{review.text}"</p>
                 <div>
                   <h4 className="text-white font-bold text-sm md:text-base">{review.author_name}</h4>
                   <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest">Google Review</p>

@@ -312,7 +312,7 @@ export default function BookingSystem() {
       pdf.save(`${bookingRef || "ACM_Booking"}_Confirmation_Pass.pdf`);
     } catch (err) {
       console.error("PDF generation error:", err);
-      window.print();
+      alert("There was an issue generating your PDF. Please use the Print Pass button instead.");
     } finally {
       setIsGeneratingPdf(false);
     }
